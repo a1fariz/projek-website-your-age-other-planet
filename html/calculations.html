@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculations - Planetary Age Calculator</title>
+    <link rel="stylesheet" href="/ALFA_RIZI/css/calculations.css">
+    <link rel="stylesheet" href="/css/calculations.css">
+
+
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+<header class="header">
+    <div class="logo">Solar Explorer</div>
+    
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link active">About</a></li>
+        <li><a href="solar-walk.html" class="nav-link active">SolarWalk</a></li>
+        <li><a href="resources.html" class="nav-link active">Resources</a></li>
+        <li><a href="calculations.html" class="nav-link active">Calculations</a></li>
+    </ul>
+</header>
+
+    <main class="main-container">
+        <section class="page-section active">
+            <div class="content-wrapper single-column">
+                <header class="page-header">
+                    <h1 class="section-title">How We Calculate Your Planetary Age</h1>
+                    <p class="section-subtitle">Understanding the mathematics behind planetary age conversion</p>
+                </header>
+
+                <article class="calculations-content">
+                    <div class="formula-section">
+                        <h2>The Basic Formula</h2>
+                        <div class="formula-display">
+                            <div class="formula-box">
+                                <h3>Planetary Age =</h3>
+                                <div class="fraction">
+                                    <div class="numerator">Your Age in Earth Years</div>
+                                    <div class="denominator">Planet's Orbital Period (Earth Years)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="formula-explanation">
+                            This simple division gives us how many times that planet has completed its orbit around the Sun during your lifetime.
+                        </p>
+                    </div>
+
+                    <div class="step-by-step-section">
+                        <h2>Step-by-Step Process</h2>
+                        <div class="steps-container">
+                            <div class="step-item">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3>Calculate Earth Age</h3>
+                                    <p>We first determine your exact age in Earth years by calculating the difference between your birth date and today's date.</p>
+                                    <div class="code-snippet-wrapper">
+                                        <code>earthAge = (today - birthDate) / <br>(365.25 * 24 * 60 * 60 * 1000)</code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3>Apply Orbital Period</h3>
+                                    <p>We divide your Earth age by each planet's orbital period to get your age on that planet.</p>
+                                    <div class="code-snippet-wrapper">
+                                        <code>planetAge = earthAge / orbitalPeriod</code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3>Calculate Next Birthday</h3>
+                                    <p>We determine when your next planetary birthday <br> will occur based on the planet's orbital cycle.</p>
+                                    <div class="code-snippet-wrapper">
+                                        <code>nextBirthday = (Math.floor(planetAge) <br> + 1) * orbitalPeriod - earthAge</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="orbital-data-section">
+                        <h2>Orbital Periods Data</h2>
+                        <div class="data-table-container">
+                            <table class="orbital-table" id="orbital-table">
+                                <thead>
+                                    <tr>
+                                        <th>Planet</th>
+                                        <th>Orbital Period (Earth Years)</th>
+                                        <th>Orbital Period (Earth Days)</th>
+                                        <th>Distance from Sun (AU)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="interactive-calculator">
+                        <h2>Interactive Age Calculator</h2>
+                        <div class="calculator-container">
+                            <form id="age-calculator-form">
+                                <div class="calculator-input">
+                                    <div class="calculator-input-group">
+                                        <label for="age-input">Enter your Earth age:</label>
+                                        <input type="number" id="age-input" min="0" max="150" placeholder="25">
+                                    </div>
+                                    <button type="submit" id="calculate-all-ages-btn" class="calc-btn">Calculate All Planetary Ages</button>
+                                </div>
+                                <div class="calculator-results" id="calculator-results">
+                                    </div>
+                            </form>
+                            </div>
+                    </div>
+
+                    <div class="example-section">
+                        <h2>Example Calculation</h2>
+                        <div class="example-container">
+                            <div class="example-problem">
+                                <h3>Problem:</h3>
+                                <p>If someone is 20 years old on Earth, how old would they be on Mars?</p>
+                            </div>
+                            <div class="example-solution">
+                                <h3>Solution:</h3>
+                                <div class="solution-steps">
+                                    <p><strong>Given:</strong></p>
+                                    <ul>
+                                        <li>Earth Age = 20 years</li>
+                                        <li>Mars Orbital Period = 1.881 Earth years</li>
+                                    </ul>
+                                    <p><strong>Calculation:</strong></p>
+                                    <p>Mars Age = 20 ÷ 1.881 = 10.63 years</p>
+                                    <p><strong>Result:</strong></p>
+                                    <p>A 20-year-old person on Earth would be approximately 10.63 years old on Mars!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accuracy-note">
+                        <h2>Note on Accuracy</h2>
+                        <div class="accuracy-note-content">
+                            <p>Our calculations use the average orbital periods of planets. In reality, planetary orbits are slightly elliptical, which means the actual orbital period can vary slightly. However, for educational purposes, these average values provide an excellent approximation of your age on other planets.</p>
+                            <p>The leap year calculation (365.25 days per year) accounts for the extra day added every four years to keep our calendar synchronized with Earth's orbit.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+ <footer class="footer">
+        <div class="footer-content">
+             <div class="footer-section">
+                 <h3>Data Sources</h3>
+                 <ul>
+                     <li><a href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA</a></li>
+                     <li><a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA Open Data</a></li>
+                     <li><a href="https://solarsystem.nasa.gov/" target="_blank" rel="noopener">NASA Solar System</a></li>
+                 </ul>
+             </div>
+             <div class="footer-section">
+                 <h3>Educational Use</h3>
+                 <p>This tool is provided free for educational purposes under NASA's Open Data Policy.</p>
+             </div>
+             <div class="footer-section">
+                 <h3>Last Updated</h3>
+                 <p>July 2025</p>
+             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Planetary Age Calculator. Educational purposes only. Data courtesy of NASA.</p>
+        </div>
+    </footer>
+
+    <script src="/js/calculations.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>

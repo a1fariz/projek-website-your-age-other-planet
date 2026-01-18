@@ -1,0 +1,646 @@
+/* ==========================================
+   STYLE SOLAR-WALK & API
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ==========================================
+   ANIMASI LOGO
+   ========================================== */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #2a59b7 0%, #2a59b7 25%, #eeecee 60%, #292929 75%, #2a59b7 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradientFlow 3.5s linear infinite;
+}
+
+@keyframes gradientFlow {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+
+
+/* ==========================================
+    ANIMASI BINTANG DI BACKGROUND
+   ========================================== */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+
+/* ==========================================
+   HEADER
+   ========================================== */
+.header { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8); /* Latar belakang semi-transparan */
+    backdrop-filter: blur(10px); /* Efek blur pada latar belakang */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* ==========================================
+   NAV
+   ========================================== */
+
+.nav-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1001;
+    display: none; /* Sembunyikan secara default, tampilkan di mobile */
+}
+
+.nav-links { 
+    display: flex;
+    gap: 2rem;
+    list-style: none; /* Hapus bullet list */
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    font-weight: bold; /* Tambahkan font-weight */
+}
+
+.nav-link:hover {
+    color: #64b5f6; /* Warna biru saat hover */
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.nav-link.active {
+    background: linear-gradient(45deg, 0%, #090012 100%); /* Gradien ungu-biru */
+    border-color: #000000;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    color: white; /* Pastikan teks putih saat aktif */
+}
+
+
+/* ==========================================
+   KONTEN UTAMA (MAIN)
+   ========================================== */
+.main-container {
+    position: relative;
+    z-index: 10;
+    flex-grow: 1; /* Memastikan main mengisi ruang yang tersedia */
+    display: flex;
+    flex-direction: column; /* Konten di dalam main bertumpuk vertikal */
+    align-items: center;
+    justify-content: flex-start; /* Konten dimulai dari atas */
+    padding: 6rem 2rem 2rem; /* Padding atas untuk menghindari header fixed */
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto; /* Pusatkan main-container */
+}
+
+
+
+.section-title { 
+    font-size: 2.5rem;
+    font-weight: 300;
+    background: linear-gradient(45deg, #ffffff, #64b5f6, #e1bee7);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 4s ease-in-out infinite;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+/* Keyframes untuk animasi pergeseran gradien */
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.section-subtitle { 
+    font-size: 1rem;
+    color: #b8b8b8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+    opacity: 0.9;
+    text-align: center;
+}
+
+
+/* ==========================================
+   NASA VIDEO/CONTENT SECTION
+   ========================================== */
+.nasa-video-section {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.controls-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+
+.control-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.video-container {
+    width: 100%;
+    height: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    background: radial-gradient(ellipse at center, #0f0f23 0%, #000000 100%);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.loading-placeholder {
+    color: #b8b8b8;
+    text-align: center;
+    padding: 2rem;
+}
+
+.video-info {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.video-title {
+    font-size: 1.5rem;
+    color: #2244b1;
+    margin-bottom: 1rem;
+}
+
+.video-description {
+    color: #b8b8b8;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+/* ==========================================
+   PLANET SELECTION PANEL
+   ========================================== */
+.planet-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.planet-grid {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.planet-grid h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1a2ee6;
+}
+
+.planet-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.planet-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    color: white;
+    padding: 1rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.planet-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.planet-btn.active {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.planet-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+
+/* ==========================================
+   PLANET INFO PANEL
+   ========================================== */
+.planet-info {
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.planet-info h2 {
+    color: #2635e1;
+    margin-bottom: 2rem;
+    text-align: justify;
+    font-size: 0.8rem;
+}
+
+.planet-details {
+    display: none;
+}
+
+.planet-details.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.planet-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.planet-header .planet-icon {
+    font-size: 3rem;
+}
+
+.planet-header h3 {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.info-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.info-item h4 {
+    color: #ffd700;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.info-item p {
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+.info-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #b8b8b8;
+}
+
+.loading::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #667eea;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    border-left: 4px solid #ff6b6b;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.nasa-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #667eea;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid #667eea;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.nasa-link:hover {
+    background: #667eea;
+    color: white;
+}
+
+.apod-date {
+    color: #ffd700;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.apod-copyright {
+    color: #888;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+/* --- fallback untuk media non-image/video --- */
+.fallback-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 2rem;
+}
+
+.fallback-media .nasa-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: #fff;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fallback-media .nasa-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* --- audio tag styling --- */
+audio {
+    border-radius: 10px;
+    margin: auto;
+    display: block;
+}
+
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.footer {
+    background: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    color: #e0e0e0;
+}
+
+.footer-content {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, .05);
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    color: #ffc107;
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: .5rem;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    opacity: .8;
+    transition: .3s;
+}
+
+.footer-section ul li a:hover {
+    opacity: 1;
+    color: #64b5f6;
+}
+
+.footer-section p {
+    font-size: .9rem;
+    opacity: .7;
+    line-height: 1.5;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: .85rem;
+    opacity: .6;
+}
+
+/* ==========================================
+   RESPONSIVE SOLAR-WALK
+   ========================================== */
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 24px;
+        width: 30px;
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+    }
+
+    .nav-toggle span {
+        width: 100%;
+        height: 2px;
+        background: white;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background: rgba(15, 15, 35, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right 0.4s ease;
+        z-index: 1000;
+        padding-top: 80px;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-link {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .nav-links.active .nav-link {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .nav-links.active .nav-link:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links.active .nav-link:nth-child(2) { transition-delay: 0.2s; }
+    .nav-links.active .nav-link:nth-child(3) { transition-delay: 0.3s; }
+    .nav-links.active .nav-link:nth-child(4) { transition-delay: 0.4s; }
+    .nav-links.active .nav-link:nth-child(5) { transition-delay: 0.5s; }
+}

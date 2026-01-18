@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive 3D Solar System Explorer</title>
+    <link rel="stylesheet" href="/css/solar-walk.css">
+</head>
+<body>
+    <!-- Animated stars background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Header -->
+<header class="header">
+    <div class="logo">Solar Explorer</div>
+    
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link active">About</a></li>
+        <li><a href="solar-walk.html" class="nav-link active">SolarWalk</a></li>
+        <li><a href="resources.html" class="nav-link active">Resources</a></li>
+        <li><a href="calculations.html" class="nav-link active">Calculations</a></li>
+    </ul>
+</header>
+
+         <main class="main-container">
+        <section class="page-section active">
+            <div class="content-wrapper single-column">
+                <header class="page-header">
+                    <h1 class="section-title">Interactive 3D Solar System</h1>
+                    <p class="section-subtitle">Explore our solar system in stunning 3D with real NASA data and detailed planetary information</p>
+                </header>
+
+        <div class="nasa-video-section">
+            <div class="controls-panel">
+                <button id="fetch-apod-btn" class="control-btn">🚀 Get NASA Picture of the Day</button>
+                <button id="fetch-solar-system-btn" class="control-btn">🌟 Solar System Overview</button>
+            </div>
+            
+            <div class="video-container" id="nasa-content">
+                <div class="loading-placeholder">
+                    <p>Click the buttons above to load NASA content</p>
+                </div>
+            </div>
+            
+            <div class="video-info" id="content-info">
+                <div class="video-title" id="content-title">NASA Astronomy Content</div>
+                <div class="video-description" id="content-description">
+                    Discover amazing astronomical phenomena and solar system insights from NASA
+                </div>
+            </div>
+        </div>
+
+        <div class="planet-selection">
+            <div class="planet-grid">
+                <h2>Select a Planet to Explore</h2>
+                <div class="planet-buttons">
+                    <button class="planet-btn" data-planet="sun">
+                        <div class="planet-icon">☀️</div>
+                        <span>Sun</span>
+                    </button>
+                    <button class="planet-btn" data-planet="mercury">
+                        <div class="planet-icon">🟠</div>
+                        <span>Mercury</span>
+                    </button>
+                    <button class="planet-btn" data-planet="venus">
+                        <div class="planet-icon">🔴</div>
+                        <span>Venus</span>
+                    </button>
+                    <button class="planet-btn" data-planet="earth">
+                        <div class="planet-icon">🌍</div>
+                        <span>Earth</span>
+                    </button>
+                    <button class="planet-btn" data-planet="mars">
+                        <div class="planet-icon">🟠</div>
+                        <span>Mars</span>
+                    </button>
+                    <button class="planet-btn" data-planet="jupiter">
+                        <div class="planet-icon">🟤</div>
+                        <span>Jupiter</span>
+                    </button>
+                    <button class="planet-btn" data-planet="saturn">
+                        <div class="planet-icon">🪐</div>
+                        <span>Saturn</span>
+                    </button>
+                    <button class="planet-btn" data-planet="uranus">
+                        <div class="planet-icon">🟣</div>
+                        <span>Uranus</span>
+                    </button>
+                    <button class="planet-btn" data-planet="neptune">
+                        <div class="planet-icon">🔵</div>
+                        <span>Neptune</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="planet-info">
+                <h2>Planet Information</h2>
+                <div id="planet-info-content">
+                    <div class="loading-placeholder">
+                        <p>Select a planet from the left to view detailed information powered by NASA data</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     <footer class="footer">
+        <div class="footer-content">
+             <div class="footer-section">
+                 <h3>Data Sources</h3>
+                 <ul>
+                     <li><a href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA</a></li>
+                     <li><a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA Open Data</a></li>
+                     <li><a href="https://solarsystem.nasa.gov/" target="_blank" rel="noopener">NASA Solar System</a></li>
+                 </ul>
+             </div>
+             <div class="footer-section">
+                 <h3>Educational Use</h3>
+                 <p>This tool is provided free for educational purposes under NASA's Open Data Policy.</p>
+             </div>
+             <div class="footer-section">
+                 <h3>Last Updated</h3>
+                 <p>July 2025</p>
+             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Planetary Age Calculator. Educational purposes only. Data courtesy of NASA.</p>
+        </div>
+    </footer>
+    
+    <script src="/js/solar-walk.js"></script>
+    <script src="/js/script.js"></script>
+
+</body>
+</html>

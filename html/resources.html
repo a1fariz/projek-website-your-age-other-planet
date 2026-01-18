@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Planetary Age Calculator</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/resources.css">
+
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+<header class="header">
+    <div class="logo">Solar Explorer</div>
+    
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link active">About</a></li>
+        <li><a href="solar-walk.html" class="nav-link active">SolarWalk</a></li>
+        <li><a href="resources.html" class="nav-link active">Resources</a></li>
+        <li><a href="calculations.html" class="nav-link active">Calculations</a></li>
+    </ul>
+</header>
+
+    <main class="main-container">
+        <section class="page-section active">
+            <div class="content-wrapper single-column">
+                <header class="page-header">
+                    <h1 class="section-title">Educational Resources</h1>
+                    <p class="section-subtitle">A comprehensive collection of NASA-approved space education materials</p>
+                </header>
+
+                <article class="resources-content">
+                    <div class="apis-section">
+                        <h2>🔌 NASA APIs Used in This Project</h2>
+                        <p class="api-description">
+                            This application utilizes several NASA Open Data APIs to provide real-time space information:
+                        </p>
+                        <div class="resource-grid">
+                            <div class="api-card">
+                                <div class="api-header">
+                                    <div class="api-icon">📸</div>
+                                    <h3>Astronomy Picture of the Day (APOD)</h3>
+                                </div>
+                                <p>Daily featured astronomy images with detailed explanations from NASA scientists.</p>
+                                <div class="api-details">
+                                    <span class="api-endpoint">api.nasa.gov/planetary/apod</span>
+                                    <span class="api-status active">Active</span>
+                                </div>
+                            </div>
+                            <div class="api-card">
+                                <div class="api-header">
+                                    <div class="api-icon">🌌</div>
+                                    <h3>Near Earth Object Web Service (NeoWs)</h3>
+                                </div>
+                                <p>Information about near-Earth asteroids and their orbital characteristics.</p>
+                                <div class="api-details">
+                                    <span class="api-endpoint">api.nasa.gov/neo/rest/v1</span>
+                                    <span class="api-status active">Active</span>
+                                </div>
+                            </div>
+                            <div class="api-card">
+                                <div class="api-header">
+                                    <div class="api-icon">🌡️</div>
+                                    <h3>Mars Weather Service API</h3>
+                                </div>
+                                <p>Latest weather reports from Mars including temperature, pressure, and wind data.</p>
+                                <div class="api-details">
+                                    <span class="api-endpoint">api.nasa.gov/insight_weather</span>
+                                    <span class="api-status deprecated">Deprecated</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="additional-resources-section">
+                         <h2>🌟 Additional Learning Resources</h2>
+                         <div class="resource-grid">
+                            <div class="resource-card official">
+                                 <div class="resource-header">
+                                     <img src="https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg" alt="NASA Logo" class="nasa-logo">
+                                     <h3>NASA Solar System Exploration</h3>
+                                 </div>
+                                 <p>Comprehensive information about planets, moons, and other celestial bodies in our solar system.</p>
+                                 <div class="resource-links">
+                                     <a href="https://solarsystem.nasa.gov/" target="_blank" rel="noopener" class="resource-link">Visit Website</a>
+                                 </div>
+                             </div>
+                             <div class="resource-card official">
+                                 <div class="resource-header">
+                                     <div class="resource-icon">🔭</div>
+                                     <h3>Hubble Space Telescope</h3>
+                                 </div>
+                                 <p>Explore images and discoveries from the Hubble Space Telescope.</p>
+                                 <div class="resource-links">
+                                      <a href="https://hubblesite.org/" target="_blank" rel="noopener" class="resource-link">View Hubble Images</a>
+                                 </div>
+                             </div>
+                             <div class="resource-card official">
+                                 <div class="resource-header">
+                                     <div class="resource-icon">🛰️</div>
+                                     <h3>NASA Spacecraft Tracking</h3>
+                                 </div>
+                                 <p>Track real-time positions of NASA spacecraft and missions.</p>
+                                 <div class="resource-links">
+                                     <a href="https://eyes.nasa.gov/" target="_blank" rel="noopener" class="resource-link">Track Spacecraft</a>
+                                 </div>
+                             </div>
+                         </div>
+                    </div>
+
+                    <div class="attribution-section">
+                        <h2>📋 Data Attribution & Sources</h2>
+                        <div class="attribution-content">
+                            <p>All planetary data, imagery, and real-time information used in this educational tool are sourced from NASA's public databases and APIs. We extend our gratitude to NASA for making this wealth of knowledge available to the public.</p>
+                        </div>
+                    </div>
+
+                    <div class="disclaimer-section">
+                        <h2>⚠️ Educational Disclaimer</h2>
+                        <div class="disclaimer-content">
+                            <p>This calculator is for educational purposes only. Calculations use average orbital periods and do not account for orbital eccentricity. It is not intended for scientific research. For precise data, please refer to official NASA databases.</p>
+                        </div>
+                    </div>
+
+                    <div class="feedback-section">
+                        <h2>💬 Feedback & Suggestions</h2>
+                        <div class="feedback-content">
+                            <p>Have an idea or found a bug? We'd love to hear from you!</p>
+                            <form id="feedback-form" class="contact-form">
+                                <div class="form-group-select">
+                                    <label for="feedback-type">Feedback Type:</label>
+                                    <select id="feedback-type" name="type" required>
+                                        <option value="">Select type...</option>
+                                        <option value="suggestion">Suggestion</option>
+                                        <option value="bug">Bug Report</option>
+                                        <option value="general">General Feedback</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-textarea">
+                                    <label for="feedback-message">Message:</label>
+                                    <textarea id="feedback-message" name="message" rows="4" placeholder="Share your thoughts..." required></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn">Send Feedback</button>
+                            </form>
+                            <div id="feedback-status-message"></div>
+                        </div>
+                    </div>
+
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+             <div class="footer-section">
+                 <h3>Data Sources</h3>
+                 <ul>
+                     <li><a href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA</a></li>
+                     <li><a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA Open Data</a></li>
+                     <li><a href="https://solarsystem.nasa.gov/" target="_blank" rel="noopener">NASA Solar System</a></li>
+                 </ul>
+             </div>
+             <div class="footer-section">
+                 <h3>Educational Use</h3>
+                 <p>This tool is provided free for educational purposes under NASA's Open Data Policy.</p>
+             </div>
+             <div class="footer-section">
+                 <h3>Last Updated</h3>
+                 <p>July 2025</p>
+             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Planetary Age Calculator. Educational purposes only. Data courtesy of NASA.</p>
+        </div>
+    </footer>
+
+    <script src="/js/resources.js"></script>
+    <script src="/js/script.js"></script>
+
+</body>
+</html>

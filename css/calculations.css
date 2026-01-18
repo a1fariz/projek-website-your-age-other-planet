@@ -1,0 +1,486 @@
+/* =============== CALCULATIONS PAGE =============== */
+.calculations-content {
+    padding: 2rem; 
+    background: rgba(255, 255, 255, .05);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    margin-top: 2rem;
+}
+
+.formula-section {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.formula-section h2 {
+    font-size: 2rem;
+    color: #64b5f6;
+    margin-bottom: 2rem;
+}
+
+.formula-display {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.formula-box {
+    background: rgba(255, 255, 255, .1);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+    display: inline-block;
+    justify-content: center;
+}
+
+.formula-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #82d5ff;
+}
+
+.fraction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.numerator {
+    padding-bottom: .5rem;
+    border-bottom: 2px solid #fff;
+    margin-bottom: .5rem;
+}
+
+.denominator {
+    padding-top: .5rem;
+}
+
+.formula-explanation {
+    font-size: 1rem;
+    opacity: .8;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.step-by-step-section {
+    margin-bottom: 4rem;
+}
+
+.step-by-step-section h2 {
+    font-size: 2.2rem;
+    color: #64b5f6;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.step-item {
+    background: rgba(255, 255, 255, .08);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+    display: flexbox;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.step-number {
+    min-width: 20px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: .5rem;
+    color: #fff;
+}
+
+.step-content p {
+    font-size: .95rem;
+    line-height: 1.5;
+    opacity: .8;
+    margin-bottom: 1rem;
+}
+
+.code-snippet-wrapper {
+    background: rgba(0, 0, 0, .3);
+    padding: .8rem;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.code-snippet-wrapper code {
+    font-family: 'Fira Code', Consolas, monospace;
+    font-size: .9rem;
+    color: #e0e0e0;
+    white-space: nowrap;
+}
+
+/* ==========================================
+   ORBITAL
+   ========================================== */
+.orbital-data-section {
+    margin-bottom: 4rem;
+}
+
+.orbital-data-section h2 {
+    font-size: 2.2rem;
+    color: #64b5f6;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.data-table-container {
+    overflow-x: auto;
+}
+
+.orbital-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: rgba(255, 255, 255, .08);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.orbital-table th,
+.orbital-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.orbital-table th {
+    background: rgba(255, 255, 255, .15);
+    font-weight: bold;
+    color: #fff;
+}
+
+.orbital-table tr:last-child td {
+    border-bottom: none;
+}
+
+.orbital-table tbody tr:hover {
+    background: rgba(255, 255, 255, .05);
+}
+
+
+/* ==========================================
+   INTERACTIVE CALCULATOR
+   ========================================== */
+.interactive-calculator {
+    margin-bottom: 4rem;
+}
+
+.interactive-calculator h2 {
+    font-size: 2.2rem;
+    color: #64b5f6;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.calculator-container {
+    background: rgba(255, 255, 255, .08);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+}
+
+.calculator-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.calculator-input-group {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 150px;
+}
+
+.calculator-input label {
+    font-size: 1rem;
+    margin-bottom: .5rem;
+    opacity: .9;
+}
+
+.calculator-input input[type="number"] {
+    padding: .8rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, .2);
+    background: rgba(0, 0, 0, .3);
+    color: white;
+    font-size: 1rem;
+    transition: .3s;
+    width: 100%;
+}
+
+.calculator-input input[type="number"]:focus {
+    outline: none;
+    border-color: #64b5f6;
+    box-shadow: 0 0 8px rgba(100, 181, 246, .5);
+}
+
+.calc-btn {
+    padding: .8rem 2rem;
+    background: linear-gradient(45deg, #2b00ff, #22bdff);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+    align-self: flex-end;
+    min-width: 180px;
+}
+
+.calc-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(43, 213, 255, .3);
+}
+
+.calculator-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(97, 166, 255, .1);
+}
+
+/* ==========================================
+   PLANET RESULT
+   ========================================== */
+
+.planet-result {
+    background: rgba(255, 255, 255, .1);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, .15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+}
+
+.planet-result h3 {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+    color: #64b5f6;
+}
+
+.planet-result .planet-age {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.planet-result .planet-details {
+    font-size: .85rem;
+    opacity: .7;
+}
+
+.example-section {
+    margin-bottom: 4rem;
+}
+
+.example-section h2 {
+    font-size: 2.2rem;
+    color: #64b5f6;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.example-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background: rgba(255, 255, 255, .08);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+}
+
+.example-problem,
+.example-solution {
+    padding: 1.5rem;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, .2);
+}
+
+.example-problem h3,
+.example-solution h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #67c7ff;
+}
+
+.example-problem p,
+.example-solution p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: .9;
+}
+
+.accuracy-note {
+    text-align: center;
+}
+
+.accuracy-note h2 {
+    font-size: 2.2rem;
+    color: #64b5f6;
+    margin-bottom: 2rem;
+}
+
+.accuracy-note-content {
+    background: rgba(255, 255, 255, .08);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.accuracy-note-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: .9;
+    margin-bottom: 1rem;
+}
+
+.accuracy-note-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 768px) {
+    /* Mengurangi padding agar konten tidak terlalu terdesak */
+    .calculations-content {
+        padding: 1.5rem 1rem;
+    }
+
+    /* Menyesuaikan ukuran judul agar tidak terlalu besar */
+    .step-by-step-section h2,
+    .orbital-data-section h2,
+    .interactive-calculator h2,
+    .example-section h2,
+    .accuracy-note h2 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+
+    /* ---- Perbaikan Tata Letak Tabel Data Orbital ---- */
+    .data-table-container {
+        overflow-x: hidden; /* Sembunyikan scrollbar horizontal */
+    }
+
+    .orbital-table {
+        border: none;
+        box-shadow: none;
+    }
+
+    .orbital-table thead {
+        /* Sembunyikan header tabel di layar kecil, karena info akan pindah ke setiap baris */
+        display: none;
+    }
+
+    .orbital-table tr {
+        /* Mengubah setiap baris menjadi blok seperti kartu */
+        display: block;
+        background: rgba(255, 255, 255, .08);
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(255, 255, 255, .15);
+        padding: 1rem;
+    }
+
+    .orbital-table td {
+        display: block;      /* Sel menjadi blok vertikal */
+        text-align: right;   /* Nilai data di sebelah kanan */
+        padding: 0.75rem 0.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, .05);
+        position: relative;
+    }
+
+    .orbital-table td:last-child {
+        border-bottom: none; /* Hapus garis di sel terakhir */
+    }
+
+    .orbital-table td::before {
+        /* Menampilkan judul kolom (dari atribut 'data-label' di JS) */
+        content: attr(data-label);
+        position: absolute;
+        left: 0.5rem;
+        font-weight: bold;
+        color: #64b5f6; /* Warna aksen biru */
+        text-align: left;
+    }
+
+
+
+    /* Membuat wadah contoh menjadi satu kolom */
+    .example-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Menumpuk input kalkulator secara vertikal */
+    .calculator-input {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+
+/* ---- Untuk Layar Sangat Kecil (Ponsel, 480px ke bawah) ---- */
+@media (max-width: 480px) {
+    .calculations-content {
+        padding: 1rem 0.75rem; /* Padding lebih kecil lagi */
+    }
+
+    /* Ukuran judul lebih kecil lagi */
+    .step-by-step-section h2,
+    .orbital-data-section h2,
+    .interactive-calculator h2,
+    .example-section h2,
+    .accuracy-note h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Mengurangi padding untuk semua kotak konten */
+    .formula-box,
+    .example-container {
+        padding: 1rem;
+    }
+
+    /* Mengecilkan ukuran font formula agar muat */
+    .formula-box .formula {
+        font-size: 1rem;
+        word-wrap: break-word; /* Memaksa teks pindah baris jika terlalu panjang */
+    }
+}

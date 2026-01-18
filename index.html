@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Age on Other Planets</title>
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+<header class="header">
+    <div class="logo">Solar Explorer</div>
+    
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <ul class="nav-links">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="/html/about.html" class="nav-link active">About</a></li>
+        <li><a href="/html/solar-walk.html" class="nav-link active">SolarWalk</a></li>
+        <li><a href="/html/resources.html" class="nav-link active">Resources</a></li>
+        <li><a href="/html/calculations.html" class="nav-link active">Calculations</a></li>
+    </ul>
+</header>
+
+    <main class="main-container">
+        <section class="hero-section">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h1 class="title">How old would you be on other planets?</h1>
+                    <p class="description">
+                        Planets circle the Sun at different orbits and different speeds. They also 
+                        spin around their axis at a different pace, thus days and years pass 
+                        faster or slower there. Would you like to know what's your age on Mars 
+                        or saturn? 
+                        <br>Enter your birthdate to find out:
+                    </p>
+                    
+                    <div class="form-container">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label for="month-select">Month</label>
+                                <select id="month-select" aria-label="birth mounth">
+                                    <option value="">MM</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="day-select">Day</label>
+                                <select id="day-select" aria-label="birth day">
+                                    <option value="">DD</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="year-select">Year</label>
+                                <select id="year-select" aria-label="birth year">
+                                    <option value="">YYYY</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="calculate-btn" id="calculate-age-btn">GO!</button>
+                    </div>
+                </div>
+                
+                <div class="astronaut-container">
+                    <div class="astronaut"></div>
+                    <div class="floating-planet"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="results-container" id="results-container">
+        <div class="results-content">
+            <button class="close-btn" id="close-results-btn">&times;</button>
+            <h2 class="results-title">Your Age Across the Solar System</h2>
+            <div class="planet-grid" id="planet-grid">
+                </div>
+            <div class="results-footer-text">
+                <h3 class="birthday-message">🎂 More birthdays!</h3>
+                <p>
+                    Why celebrate your birthday only once a year? You have more! Enjoy your Mercurian, Venusian, and 
+                    Martian birthdays. Also rarer Jupiterian and Saturnian. And will you manage to live until your first 
+                    birthday on Uranus? Let's see when is that.
+                </p>
+            </div>
+        </div>
+    </div>
+
+ <footer class="footer">
+        <div class="footer-content">
+             <div class="footer-section">
+                 <h3>Data Sources</h3>
+                 <ul>
+                     <li><a href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA</a></li>
+                     <li><a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA Open Data</a></li>
+                     <li><a href="https://solarsystem.nasa.gov/" target="_blank" rel="noopener">NASA Solar System</a></li>
+                 </ul>
+             </div>
+             <div class="footer-section">
+                 <h3>Educational Use</h3>
+                 <p>This tool is provided free for educational purposes under NASA's Open Data Policy.</p>
+             </div>
+             <div class="footer-section">
+                 <h3>Last Updated</h3>
+                 <p>July 2025</p>
+             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Planetary Age Calculator. Educational purposes only. Data courtesy of NASA.</p>
+        </div>
+    </footer>
+    <script src="/js/script.js"></script>
+</body>
+</html>
