@@ -1,21 +1,25 @@
 /* =============== CALCULATIONS PAGE =============== */
 .calculations-content {
-    padding: 2rem; 
-    background: rgba(255, 255, 255, .05);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, .1);
+    padding: 2.5rem; 
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
     margin-top: 2rem;
+    box-shadow: var(--glass-shadow);
 }
 
-.formula-section {
+.formula-section, .step-by-step-section, .orbital-data-section, .interactive-calculator, .example-section, .accuracy-note {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 4.5rem;
 }
 
-.formula-section h2 {
-    font-size: 2rem;
-    color: #64b5f6;
+.formula-section h2, .step-by-step-section h2, .orbital-data-section h2, .interactive-calculator h2, .example-section h2, .accuracy-note h2 {
+    font-size: 2.2rem;
+    color: var(--accent-cyan);
     margin-bottom: 2rem;
+    font-weight: 700;
 }
 
 .formula-display {
@@ -27,19 +31,20 @@
 }
 
 .formula-box {
-    background: rgba(255, 255, 255, .1);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, .15);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     display: inline-block;
     justify-content: center;
 }
 
 .formula-box h3 {
     font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #82d5ff;
+    margin-bottom: 1.5rem;
+    color: var(--accent-blue);
+    font-weight: 600;
 }
 
 .fraction {
@@ -47,169 +52,163 @@
     flex-direction: column;
     align-items: center;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
+    color: var(--text-main);
 }
 
 .numerator {
-    padding-bottom: .5rem;
-    border-bottom: 2px solid #fff;
-    margin-bottom: .5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--glass-border);
+    margin-bottom: 0.8rem;
+    color: var(--accent-purple);
 }
 
 .denominator {
-    padding-top: .5rem;
+    padding-top: 0.5rem;
 }
 
 .formula-explanation {
-    font-size: 1rem;
-    opacity: .8;
+    font-size: 1.1rem;
+    color: var(--text-muted);
     max-width: 700px;
     margin: 0 auto;
-}
-
-.step-by-step-section {
-    margin-bottom: 4rem;
-}
-
-.step-by-step-section h2 {
-    font-size: 2.2rem;
-    color: #64b5f6;
-    margin-bottom: 2rem;
-    text-align: center;
+    line-height: 1.6;
 }
 
 .steps-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
 .step-item {
-    background: rgba(255, 255, 255, .08);
-    padding: 1.5rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, .15);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
-    display: flexbox;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    display: flex;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 1.5rem;
+    transition: var(--transition);
+}
+
+.step-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .step-number {
-    min-width: 20px;
-    height: 40px;
+    min-width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    font-size: 1.5rem;
+    font-weight: 700;
+    font-size: 1.4rem;
     color: #fff;
     flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(79, 172, 254, 0.3);
+}
+
+.step-content {
+    text-align: left;
 }
 
 .step-content h3 {
     font-size: 1.4rem;
-    margin-bottom: .5rem;
-    color: #fff;
+    margin-bottom: 0.8rem;
+    color: var(--accent-blue);
 }
 
 .step-content p {
-    font-size: .95rem;
-    line-height: 1.5;
-    opacity: .8;
-    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
 }
 
 .code-snippet-wrapper {
-    background: rgba(0, 0, 0, .3);
-    padding: .8rem;
-    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 1rem;
+    border-radius: 12px;
     overflow-x: auto;
+    border: 1px solid var(--glass-border);
 }
 
 .code-snippet-wrapper code {
     font-family: 'Fira Code', Consolas, monospace;
-    font-size: .9rem;
-    color: #e0e0e0;
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
     white-space: nowrap;
 }
 
 /* ==========================================
-   ORBITAL
+   ORBITAL DATA
    ========================================== */
-.orbital-data-section {
-    margin-bottom: 4rem;
-}
-
-.orbital-data-section h2 {
-    font-size: 2.2rem;
-    color: #64b5f6;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
 .data-table-container {
     overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.03);
 }
 
 .orbital-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1rem;
-    background: rgba(255, 255, 255, .08);
-    border-radius: 10px;
     overflow: hidden;
 }
 
 .orbital-table th,
 .orbital-table td {
-    padding: 1rem;
+    padding: 1.2rem 1.5rem;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    border-bottom: 1px solid var(--glass-border);
+    color: var(--text-main);
 }
 
 .orbital-table th {
-    background: rgba(255, 255, 255, .15);
-    font-weight: bold;
-    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 }
 
 .orbital-table tr:last-child td {
     border-bottom: none;
 }
 
-.orbital-table tbody tr:hover {
-    background: rgba(255, 255, 255, .05);
+.orbital-table tbody tr {
+    transition: var(--transition);
 }
 
+.orbital-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
 
 /* ==========================================
    INTERACTIVE CALCULATOR
    ========================================== */
-.interactive-calculator {
-    margin-bottom: 4rem;
-}
-
-.interactive-calculator h2 {
-    font-size: 2.2rem;
-    color: #64b5f6;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
 .calculator-container {
-    background: rgba(255, 255, 255, .08);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, .15);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .calculator-input {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     align-items: flex-end;
     justify-content: center;
 }
@@ -218,269 +217,241 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    min-width: 150px;
+    min-width: 200px;
+    text-align: left;
 }
 
 .calculator-input label {
     font-size: 1rem;
-    margin-bottom: .5rem;
-    opacity: .9;
+    margin-bottom: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
 }
 
 .calculator-input input[type="number"] {
-    padding: .8rem;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, .2);
-    background: rgba(0, 0, 0, .3);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.2);
     color: white;
-    font-size: 1rem;
-    transition: .3s;
+    font-size: 1.1rem;
+    transition: var(--transition);
     width: 100%;
 }
 
 .calculator-input input[type="number"]:focus {
     outline: none;
-    border-color: #64b5f6;
-    box-shadow: 0 0 8px rgba(100, 181, 246, .5);
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .calc-btn {
-    padding: .8rem 2rem;
-    background: linear-gradient(45deg, #2b00ff, #22bdff);
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
     border: none;
-    border-radius: 25px;
+    border-radius: 12px;
     color: white;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: .3s;
-    align-self: flex-end;
-    min-width: 180px;
+    transition: var(--transition);
+    min-width: 200px;
+    box-shadow: 0 8px 20px rgba(79, 172, 254, 0.3);
 }
 
 .calc-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(43, 213, 255, .3);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(79, 172, 254, 0.4);
+    filter: brightness(1.1);
 }
 
 .calculator-results {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(97, 166, 255, .1);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
 }
 
 /* ==========================================
    PLANET RESULT
    ========================================== */
-
 .planet-result {
-    background: rgba(255, 255, 255, .1);
-    padding: 1rem;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, .15);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+    border: 1px solid var(--glass-border);
+    transition: var(--transition);
+}
+
+.planet-result:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .planet-result h3 {
     font-size: 1.2rem;
-    margin-bottom: .5rem;
-    color: #64b5f6;
+    margin-bottom: 0.8rem;
+    color: var(--accent-blue);
 }
 
 .planet-result .planet-age {
-    font-size: 1.8rem;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: 800;
     color: #fff;
+    margin-bottom: 0.5rem;
 }
 
 .planet-result .planet-details {
-    font-size: .85rem;
-    opacity: .7;
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
-.example-section {
-    margin-bottom: 4rem;
-}
-
-.example-section h2 {
-    font-size: 2.2rem;
-    color: #64b5f6;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
+/* ==========================================
+   EXAMPLES & NOTES
+   ========================================== */
 .example-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    background: rgba(255, 255, 255, .08);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, .15);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: left;
 }
 
 .example-problem,
 .example-solution {
-    padding: 1.5rem;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, .2);
+    padding: 2rem;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
 }
 
 .example-problem h3,
 .example-solution h3 {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #67c7ff;
+    margin-bottom: 1.5rem;
+    color: var(--accent-blue);
 }
 
 .example-problem p,
-.example-solution p {
-    font-size: 1rem;
+.example-solution p,
+.example-solution ul {
+    font-size: 1.05rem;
     line-height: 1.6;
-    opacity: .9;
+    color: var(--text-main);
 }
 
-.accuracy-note {
-    text-align: center;
+.example-solution ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
-.accuracy-note h2 {
-    font-size: 2.2rem;
-    color: #64b5f6;
-    margin-bottom: 2rem;
+.example-solution ul li {
+    margin-bottom: 0.5rem;
 }
 
 .accuracy-note-content {
-    background: rgba(255, 255, 255, .08);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, .15);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     max-width: 900px;
     margin: 0 auto;
+    text-align: left;
 }
 
 .accuracy-note-content p {
-    font-size: 1rem;
-    line-height: 1.6;
-    opacity: .9;
-    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
 }
 
 .accuracy-note-content p:last-child {
     margin-bottom: 0;
 }
 
-
 /* ==========================================
    RESPONSIVE
    ========================================== */
+@media (max-width: 992px) {
+    .example-container {
+        grid-template-columns: 1fr;
+    }
+}
 
 @media (max-width: 768px) {
-    /* Mengurangi padding agar konten tidak terlalu terdesak */
     .calculations-content {
-        padding: 1.5rem 1rem;
+        padding: 1.5rem;
     }
 
-    /* Menyesuaikan ukuran judul agar tidak terlalu besar */
-    .step-by-step-section h2,
-    .orbital-data-section h2,
-    .interactive-calculator h2,
-    .example-section h2,
-    .accuracy-note h2 {
+    .formula-section h2, .step-by-step-section h2, .orbital-data-section h2, .interactive-calculator h2, .example-section h2, .accuracy-note h2 {
         font-size: 1.8rem;
-        line-height: 1.3;
     }
 
-    /* ---- Perbaikan Tata Letak Tabel Data Orbital ---- */
     .data-table-container {
-        overflow-x: hidden; /* Sembunyikan scrollbar horizontal */
-    }
-
-    .orbital-table {
-        border: none;
-        box-shadow: none;
+        border-radius: 12px;
     }
 
     .orbital-table thead {
-        /* Sembunyikan header tabel di layar kecil, karena info akan pindah ke setiap baris */
         display: none;
     }
 
     .orbital-table tr {
-        /* Mengubah setiap baris menjadi blok seperti kartu */
         display: block;
-        background: rgba(255, 255, 255, .08);
-        border-radius: 10px;
-        margin-bottom: 1rem;
-        border: 1px solid rgba(255, 255, 255, .15);
+        border-bottom: 1px solid var(--glass-border);
         padding: 1rem;
+    }
+    
+    .orbital-table tr:last-child {
+        border-bottom: none;
     }
 
     .orbital-table td {
-        display: block;      /* Sel menjadi blok vertikal */
-        text-align: right;   /* Nilai data di sebelah kanan */
-        padding: 0.75rem 0.5rem;
-        border-bottom: 1px solid rgba(255, 255, 255, .05);
-        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .orbital-table td:last-child {
-        border-bottom: none; /* Hapus garis di sel terakhir */
+        border-bottom: none;
     }
 
     .orbital-table td::before {
-        /* Menampilkan judul kolom (dari atribut 'data-label' di JS) */
         content: attr(data-label);
-        position: absolute;
-        left: 0.5rem;
-        font-weight: bold;
-        color: #64b5f6; /* Warna aksen biru */
+        font-weight: 600;
+        color: var(--accent-blue);
         text-align: left;
+        margin-right: 1rem;
     }
 
-
-
-    /* Membuat wadah contoh menjadi satu kolom */
-    .example-container {
-        grid-template-columns: 1fr;
-    }
-
-    /* Menumpuk input kalkulator secara vertikal */
     .calculator-input {
         flex-direction: column;
         align-items: stretch;
     }
+    
+    .calc-btn {
+        width: 100%;
+    }
 }
 
-
-/* ---- Untuk Layar Sangat Kecil (Ponsel, 480px ke bawah) ---- */
 @media (max-width: 480px) {
-    .calculations-content {
-        padding: 1rem 0.75rem; /* Padding lebih kecil lagi */
+    .formula-box, .example-container, .accuracy-note-content, .calculator-container {
+        padding: 1.5rem;
     }
-
-    /* Ukuran judul lebih kecil lagi */
-    .step-by-step-section h2,
-    .orbital-data-section h2,
-    .interactive-calculator h2,
-    .example-section h2,
-    .accuracy-note h2 {
-        font-size: 1.5rem;
-    }
-
-    /* Mengurangi padding untuk semua kotak konten */
-    .formula-box,
-    .example-container {
-        padding: 1rem;
-    }
-
-    /* Mengecilkan ukuran font formula agar muat */
-    .formula-box .formula {
-        font-size: 1rem;
-        word-wrap: break-word; /* Memaksa teks pindah baris jika terlalu panjang */
+    
+    .fraction {
+        font-size: 1.2rem;
     }
 }

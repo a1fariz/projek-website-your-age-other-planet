@@ -1,10 +1,13 @@
 /* =============== RESOURCES PAGE =============== */
 .resources-content {
-    padding: 2rem;
-    background: rgba(255, 255, 255, .05);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, .1);
+    padding: 2.5rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
     margin-top: 2rem;
+    box-shadow: var(--glass-shadow);
 }
 
 .apis-section,
@@ -12,7 +15,7 @@
 .attribution-section,
 .disclaimer-section,
 .feedback-section {
-    margin-bottom: 4rem;
+    margin-bottom: 4.5rem;
 }
 
 .apis-section h2,
@@ -21,34 +24,35 @@
 .disclaimer-section h2,
 .feedback-section h2 {
     font-size: 2.2rem;
-    color: #64b5f6;
+    color: var(--accent-cyan);
     margin-bottom: 2rem;
     text-align: center;
+    font-weight: 700;
 }
 
 .api-description {
     font-size: 1.1rem;
     line-height: 1.6;
     max-width: 800px;
-    margin: 0 auto 2rem;
-    opacity: .9;
+    margin: 0 auto 2.5rem;
+    color: var(--text-muted);
     text-align: center;
 }
 
 .resource-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
 .api-card,
 .resource-card {
-    background: rgba(255, 255, 255, .08);
-    padding: 1.5rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, .15);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
-    transition: .3s;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: var(--transition);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -56,35 +60,38 @@
 
 .api-card:hover,
 .resource-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, .3);
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
 .api-header,
 .resource-header {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 .api-icon,
 .resource-icon {
-    font-size: 2.5rem;
-    color: #ffc107;
+    font-size: 2.8rem;
+    filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.5));
 }
 
 .api-header h3,
 .resource-header h3 {
     font-size: 1.5rem;
-    color: #fff;
+    color: var(--accent-blue);
+    font-weight: 600;
 }
 
 .api-card p,
 .resource-card p {
-    font-size: .95rem;
-    line-height: 1.5;
-    opacity: .8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
     margin-bottom: 1.5rem;
     flex-grow: 1;
 }
@@ -93,77 +100,89 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: .85rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, .1);
+    font-size: 0.85rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--glass-border);
 }
 
 .api-endpoint {
-    opacity: .7;
-    font-family: 'Fira Code', monospace;
+    color: var(--text-muted);
+    font-family: 'Fira Code', Consolas, monospace;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
 }
 
 .api-status {
-    padding: .3rem .6rem;
-    border-radius: 5px;
-    font-weight: bold;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .api-status.active {
-    background: rgba(76, 175, 80, .2);
+    background: rgba(76, 175, 80, 0.2);
     color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
 .api-status.deprecated {
-    background: rgba(244, 67, 54, .2);
+    background: rgba(244, 67, 54, 0.2);
     color: #F44336;
+    border: 1px solid rgba(244, 67, 54, 0.3);
 }
 
 .resource-links {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, .1);
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--glass-border);
 }
 
 .resource-link {
     display: inline-block;
-    padding: .6rem 1.2rem;
-    background: linear-gradient(45deg, #64b5f6, #42a5f5);
-    border-radius: 20px;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+    border-radius: 12px;
     text-decoration: none;
     color: white;
-    font-weight: bold;
-    font-size: .9rem;
-    transition: .3s;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.2);
 }
 
 .resource-link:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 10px rgba(66, 165, 245, .3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(79, 172, 254, 0.4);
+    filter: brightness(1.1);
 }
 
 .nasa-logo {
     height: 40px;
     width: auto;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
 }
 
 .attribution-content,
 .disclaimer-content {
-    background: rgba(255, 255, 255, .08);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, .15);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     max-width: 900px;
     margin: 0 auto;
 }
 
 .attribution-content p,
 .disclaimer-content p {
-    font-size: 1rem;
-    line-height: 1.6;
-    opacity: .9;
-    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 .attribution-content p:last-child,
@@ -175,19 +194,19 @@
    FEEDBACK
    ========================================== */
 .feedback-section {
-    background: rgba(255, 255, 255, .08);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, .15);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     max-width: 700px;
     margin: 0 auto;
 }
 
 .feedback-content p {
-    font-size: 1rem;
-    opacity: .9;
-    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
     text-align: center;
 }
 
@@ -201,66 +220,105 @@
 .form-group-textarea {
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
 .contact-form label {
-    font-size: 1rem;
-    margin-bottom: .5rem;
-    opacity: .9;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
 }
 
 .contact-form select,
 .contact-form textarea {
-    padding: .8rem;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, .2);
-    background: rgba(0, 0, 0, .3);
-    color: #e0e0e0;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
     font-size: 1rem;
-    transition: .3s;
+    transition: var(--transition);
+}
+
+.contact-form select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+.contact-form select option {
+    background-color: var(--bg-mid);
+    color: #fff;
 }
 
 .contact-form select:focus,
 .contact-form textarea:focus {
     outline: none;
-    border-color: #64b5f6;
-    box-shadow: 0 0 8px rgba(100, 181, 246, .5);
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .contact-form textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 120px;
+    font-family: inherit;
 }
 
 .submit-btn {
-    padding: .8rem 2rem;
-    background: linear-gradient(45deg, #4CAF50, #8BC34A);
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
     border: none;
-    border-radius: 25px;
+    border-radius: 12px;
     color: white;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: .3s;
+    transition: var(--transition);
     align-self: center;
-    width: fit-content;
+    box-shadow: 0 8px 20px rgba(79, 172, 254, 0.3);
 }
 
 .submit-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(76, 175, 80, .3);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(79, 172, 254, 0.4);
+    filter: brightness(1.1);
 }
 
 .success-message {
-    background: rgba(76, 175, 80, .2);
+    background: rgba(76, 175, 80, 0.1);
     border-left: 4px solid #4CAF50;
-    padding: 1rem;
-    margin-top: 1.5rem;
-    border-radius: 0 8px 8px 0;
-    text-align: center;
+    padding: 1rem 1.5rem;
+    margin-top: 2rem;
+    border-radius: 0 12px 12px 0;
+    text-align: left;
 }
 
 .success-message p {
-    margin-bottom: .5rem;
+    margin-bottom: 0;
     font-size: 1rem;
-    opacity: 1;
+    color: #4CAF50;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .resources-content {
+        padding: 1.5rem;
+    }
+    
+    .apis-section h2, .additional-resources-section h2, .attribution-section h2, .disclaimer-section h2, .feedback-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .api-card, .resource-card {
+        padding: 1.5rem;
+    }
+    
+    .submit-btn {
+        width: 100%;
+    }
 }

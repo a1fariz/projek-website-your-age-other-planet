@@ -7,12 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', function(event) {
             navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
             event.stopPropagation();
         });
 
         navMenu.addEventListener('click', function() {
             if (navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
             }
         });
     }
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (navMenu && navToggle && navMenu.classList.contains('active')) {
             if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
                 navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
             }
         }
     });
