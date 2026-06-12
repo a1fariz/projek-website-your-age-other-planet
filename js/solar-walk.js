@@ -17,7 +17,7 @@ let currentPlanet = null;
 function init() {
     setupEventListeners();
     showDefaultPlanetInfo();
-    fetchAPOD(); // Memanggil API NASA secara asinkron saat halaman dimuat
+    prefetchPromise = prefetchAPOD(); // Mulai prefetch di background secara asinkron (UI tetap kosong sampai tombol ditekan)
 }
 
 // Setup event listeners
@@ -48,23 +48,53 @@ function showDefaultPlanetInfo() {
     infoContent.appendChild(placeholderDiv);
 }
 
-// Fetch untuk NASA Astronomy Picture of the Day
+// Global variabel untuk prefetch
+let prefetchPromise = null;
+
+// Fungsi pembantu untuk mengambil data APOD di background (prefetch)
+function prefetchAPOD() {
+    if (
+        localStorage.getItem('lastAPOD') &&
+        Date.now() - localStorage.getItem('lastAPODTime') < 3600000
+    ) {
+        return Promise.resolve(JSON.parse(localStorage.getItem('lastAPOD')));
+    }
+
+    return fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`)
+        .then(response => {
+            if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+            return response.json();
+        })
+        .then(data => {
+            localStorage.setItem('lastAPOD', JSON.stringify(data));
+            localStorage.setItem('lastAPODTime', Date.now());
+            return data;
+        })
+        .catch(err => {
+            console.error("Prefetch APOD failed:", err);
+            throw err;
+        });
+}
+
+// Fetch untuk NASA Astronomy Picture of the Day (diaktifkan saat tombol diklik)
 async function fetchAPOD() {
     const contentContainer = document.getElementById('nasa-content');
     const titleElement      = document.getElementById('content-title');
     const descriptionElement= document.getElementById('content-description');
     const button            = document.getElementById('fetch-apod-btn');
 
-    // 1. coba ambil cache dulu
-    if (
-        localStorage.getItem('lastAPOD') &&
-        Date.now() - localStorage.getItem('lastAPODTime') < 3600000
-    ) {
-        renderAPOD(JSON.parse(localStorage.getItem('lastAPOD')));
-        return; // keluar fungsi
-    }
+    // 1. Coba ambil dari cache lokal langsung untuk render instan (0ms wait)
+    try {
+        if (
+            localStorage.getItem('lastAPOD') &&
+            Date.now() - localStorage.getItem('lastAPODTime') < 3600000
+        ) {
+            renderAPOD(JSON.parse(localStorage.getItem('lastAPOD')));
+            return;
+        }
+    } catch (e) {}
 
-    // 2. jika belum ada cache / sudah kadaluarsa
+    // 2. Jika pre-fetch belum selesai atau gagal, tampilkan loading state
     button.disabled = true;
     button.textContent = '🔄 Loading...';
 
@@ -76,17 +106,11 @@ async function fetchAPOD() {
     contentContainer.appendChild(loadingDiv);
 
     try {
-        const response = await fetch(
-            `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`
-        );
-        if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
-
-        const data = await response.json();
-
-        // simpan ke cache
-        localStorage.setItem('lastAPOD', JSON.stringify(data));
-        localStorage.setItem('lastAPODTime', Date.now());
-
+        // Gunakan prefetchPromise yang berjalan di background
+        if (!prefetchPromise) {
+            prefetchPromise = prefetchAPOD();
+        }
+        const data = await prefetchPromise;
         renderAPOD(data);
     } catch (err) {
         console.error(err);
@@ -99,6 +123,9 @@ async function fetchAPOD() {
 
         titleElement.textContent = 'Error Loading Content';
         descriptionElement.textContent = 'Please try again later.';
+        
+        // Reset promise agar bisa dicoba fetch kembali jika gagal
+        prefetchPromise = null;
     } finally {
         button.disabled = false;
         button.textContent = '🚀 Get NASA Picture of the Day';
