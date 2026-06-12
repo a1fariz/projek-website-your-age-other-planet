@@ -17,6 +17,7 @@ let currentPlanet = null;
 function init() {
     setupEventListeners();
     showDefaultPlanetInfo();
+    fetchAPOD(); // Memanggil API NASA secara asinkron saat halaman dimuat
 }
 
 // Setup event listeners
