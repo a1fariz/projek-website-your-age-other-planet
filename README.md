@@ -45,9 +45,9 @@ Karena proyek ini sepenuhnya *static website*, Anda bisa menjalankannya dengan m
 3. **Gunakan Live Server (Sangat Disarankan)**:
    - Jika Anda menggunakan **Visual Studio Code**, instal ekstensi **Live Server**.
    - Klik kanan pada file `index.html` dan pilih **"Open with Live Server"**.
-   - Website akan otomatis terbuka di *browser* pada alamat `http://127.0.0.1:5500/index.html`.
+   - Website akan otomatis terbuka di *browser* pada alamat `https://projek-website-your-age-other-plane.vercel.app/`.
 4. **Buka Langsung (Alternatif)**:
-   - Anda juga dapat sekadar mengklik ganda (double-click) file `index.html` untuk membukanya secara lokal (alamat `file:///.../index.html`). 
+   - Anda juga dapat sekadar mengklik ganda (double-click) file `index.html` untuk membukanya secara lokal (alamat `https://projek-website-your-age-other-plane.vercel.app/`). 
    - *Catatan: Semua path dalam proyek ini telah menggunakan relative paths (`./`, `../`) sehingga aman dibuka tanpa server sekalipun.*
 
 ## 📂 Struktur Direktori

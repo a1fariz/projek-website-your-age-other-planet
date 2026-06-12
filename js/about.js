@@ -7,35 +7,9 @@
 /* ==========================================
    DATA PLANET UNTUK PERBANDINGAN
    ========================================== */
-const planetsComparisonData = {
-    mercury: { name: "Mercury", period: 0.241, color: "#8c7853", distance: "57.9 million km", dayLength: "4,222.6 hours" },
-    venus: { name: "Venus", period: 0.615, color: "#ffc649", distance: "108.2 million km", dayLength: "2,802.0 hours" },
-    earth: { name: "Earth", period: 1.0, color: "#4f94cd", distance: "149.6 million km", dayLength: "24.0 hours" },
-    mars: { name: "Mars", period: 1.881, color: "#cd5c5c", distance: "227.9 million km", dayLength: "24.7 hours" },
-    jupiter: { name: "Jupiter", period: 11.862, color: "#d2691e", distance: "778.6 million km", dayLength: "9.9 hours" },
-    saturn: { name: "Saturn", period: 29.456, color: "#fad5a5", distance: "1.432 billion km", dayLength: "10.7 hours" },
-    uranus: { name: "Uranus", period: 84.07, color: "#4fd0e7", distance: "2.867 billion km", dayLength: "17.2 hours" },
-    neptune: { name: "Neptune", period: 164.81, color: "#4169e1", distance: "4.515 billion km", dayLength: "16.1 hours" },
-    pluto: { name: "Pluto", period: 248.1, color: "#8b7d6b", distance: "5.906 billion km", dayLength: "153.3 hours" }
-};
-
-
-/* ==========================================
-   MEMBUAT BINTANG ANIMASI DI BACKGROUN
-   ========================================== */
-function createStars() {
-    const starsContainer = document.getElementById('stars');
-    if (!starsContainer) return; // Pengaman jika elemen tidak ada
-    // Loop untuk membuat 100 bintang
-    for (let i = 0; i < 100; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
-        starsContainer.appendChild(star);
-    }
-}
+const planetsComparisonData = Object.fromEntries(
+    Object.entries(PLANETS_DATA).filter(([key, planet]) => planet.period > 0)
+);
 
 
 
@@ -191,10 +165,7 @@ function animateConceptCards() {
    ========================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
-    createStars();
     createPlanetComparisonGrid();
     addFactItemEffects();
     animateConceptCards();
-    
-
 });

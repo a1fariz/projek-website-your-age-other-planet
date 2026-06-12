@@ -1,20 +1,3 @@
-
-
-// Membuat bintang animasi di latar belakang.
-function createStars() {
-    const starsContainer = document.getElementById('stars');
-    // Loop untuk membuat 100 bintang
-    for (let i = 0; i < 100; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
-        starsContainer.appendChild(star);
-    }
-}
-
-
 /* ==========================================
    FUNGSI SPESIFIK HALAMAN RESOURCES
    ========================================== */
@@ -75,9 +58,6 @@ function handleFeedbackFormSubmit(event) {
    ========================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Inisialisasi fungsi dasar
-    createStars();
-
     // Event listener untuk formulir umpan balik
     const feedbackForm = document.getElementById('feedback-form');
     if (feedbackForm) {

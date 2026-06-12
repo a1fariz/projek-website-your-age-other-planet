@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
         navToggle.addEventListener('click', function(event) {
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
+            
+            if (navMenu.classList.contains('active')) {
+                document.body.classList.add('no-scroll');
+            } else {
+                document.body.classList.remove('no-scroll');
+            }
+            
             event.stopPropagation();
         });
 
@@ -15,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
+                document.body.classList.remove('no-scroll');
             }
         });
     }
@@ -24,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
+                document.body.classList.remove('no-scroll');
             }
         }
     });
@@ -53,20 +62,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ========== KUMPULAN FUNGSI ==========
 
-/* Data planet yang digunakan untuk perhitungan.
- Periode dalam satuan TAHUN BUMI.
- */
-const planetsData = {
-    mercury: { name: "Mercury", period: 0.241, color: "#8c7853" },
-    venus: { name: "Venus", period: 0.615, color: "#ffc649" },
-    earth: { name: "Earth", period: 1.0, color: "#4f94cd" },
-    mars: { name: "Mars", period: 1.881, color: "#cd5c5c" },
-    jupiter: { name: "Jupiter", period: 11.862, color: "#d2691e" },
-    saturn: { name: "Saturn", period: 29.456, color: "#fad5a5" },
-    uranus: { name: "Uranus", period: 84.07, color: "#4fd0e7" },
-    neptune: { name: "Neptune", period: 164.81, color: "#4169e1" },
-    pluto: { name: "Pluto", period: 248.1, color: "#8b7d6b" }
-};
+/* Data planet diambil secara dinamis dari planets-data.js terpusat (kecuali Matahari/sun) */
+const planetsData = Object.fromEntries(
+    Object.entries(PLANETS_DATA).filter(([key, planet]) => planet.period > 0)
+);
 
 /*
 Membuat bintang-bintang di background.

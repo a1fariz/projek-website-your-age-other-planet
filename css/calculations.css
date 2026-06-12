@@ -116,6 +116,8 @@
 
 .step-content {
     text-align: left;
+    width: 100%;
+    min-width: 0;
 }
 
 .step-content h3 {
@@ -391,6 +393,12 @@
 @media (max-width: 768px) {
     .calculations-content {
         padding: 1.5rem;
+    }
+
+    .step-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
     }
 
     .formula-section h2, .step-by-step-section h2, .orbital-data-section h2, .interactive-calculator h2, .example-section h2, .accuracy-note h2 {

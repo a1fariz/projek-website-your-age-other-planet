@@ -7,156 +7,16 @@ const NASA_API_KEY = 'uRlqkEJIXEcH9btbVeUlf6ZBafcvTgFC6nY5u8zZ';
 const NASA_BASE_URL = 'https://www.nasa.gov/';
 
 
-const PLANET_DATA = {
-    sun: {
-        name: 'Sun',
-        icon: '☀️',
-        type: 'Star',
-        diameter: '1,392,700 km',
-        mass: '1.989 × 10³⁰ kg',
-        temperature: '5,778 K (surface)',
-        composition: 'Hydrogen (73%), Helium (25%)',
-        funFact: 'The Sun contains 99.86% of the mass in the Solar System',
-        nasaUrl: 'https://solarsystem.nasa.gov/solar-system/sun/overview/'
-    },
-    mercury: {
-        name: 'Mercury',
-        icon: '🟠',
-        type: 'Terrestrial Planet',
-        diameter: '4,879 km',
-        mass: '3.301 × 10²³ kg',
-        distance: '57.9 million km from Sun',
-        orbitalPeriod: '88 Earth days',
-        dayLength: '59 Earth days',
-        temperature: '-173°C to 427°C',
-        composition: 'Iron core, silicate mantle',
-        funFact: 'Mercury has no atmosphere and extreme temperature variations',
-        nasaUrl: 'https://solarsystem.nasa.gov/planets/mercury/overview/'
-    },
-    venus: {
-        name: 'Venus',
-        icon: '🔴',
-        type: 'Terrestrial Planet',
-        diameter: '12,104 km',
-        mass: '4.867 × 10²⁴ kg',
-        distance: '108.2 million km from Sun',
-        orbitalPeriod: '225 Earth days',
-        dayLength: '243 Earth days',
-        temperature: '462°C (hottest planet)',
-        composition: 'Dense CO₂ atmosphere, sulfuric acid clouds',
-        funFact: 'Venus rotates backwards and is the hottest planet in our solar system',
-        nasaUrl: 'https://solarsystem.nasa.gov/planets/venus/overview/'
-    },
-    earth: {
-        name: 'Earth',
-        icon: '🌍',
-        type: 'Terrestrial Planet',
-        diameter: '12,756 km',
-        mass: '5.972 × 10²⁴ kg',
-        distance: '149.6 million km from Sun',
-        orbitalPeriod: '365.25 days',
-        dayLength: '24 hours',
-        temperature: '-89°C to 58°C',
-        composition: 'Nitrogen (78%), Oxygen (21%) atmosphere',
-        funFact: 'The only known planet with life and liquid water on its surface',
-        nasaUrl: 'https://solarsystem.nasa.gov/planets/earth/overview/'
-    },
-    mars: {
-        name: 'Mars',
-        icon: '🟠',
-        type: 'Terrestrial Planet',
-        diameter: '6,792 km',
-        mass: '6.39 × 10²³ kg',
-        distance: '227.9 million km from Sun',
-        orbitalPeriod: '687 Earth days',
-        dayLength: '24.6 hours',
-        temperature: '-87°C to -5°C',
-        composition: 'Thin CO₂ atmosphere, iron oxide surface',
-        funFact: 'Mars has the largest volcano in the solar system - Olympus Mons',
-        nasaUrl: 'https://solarsystem.nasa.gov/planets/mars/overview/'
-    },
-    jupiter: {
-        name: 'Jupiter',
-        icon: '🟤',
-        type: 'Gas Giant',
-        diameter: '142,984 km',
-        mass: '1.898 × 10²⁷ kg',
-        distance: '778.5 million km from Sun',
-        orbitalPeriod: '12 Earth years',
-        dayLength: '9.9 hours',
-        temperature: '-108°C',
-        composition: 'Hydrogen (89%), Helium (10%)',
-        funFact: 'Jupiter has over 80 moons and a Great Red Spot storm larger than Earth',
-        nasaUrl: 'https://solarsystem.nasa.gov/planets/jupiter/overview/'
-    },
-    saturn: {
-        name: 'Saturn',
-        icon: '🪐',
-        type: 'Gas Giant',
-        diameter: '120,536 km',
-        mass: '5.683 × 10²⁶ kg',
-        distance: '1.432 billion km from Sun',
-        orbitalPeriod: '29.5 Earth years',
-        dayLength: '10.7 hours',
-        temperature: '-139°C',
-        composition: 'Hydrogen (96%), Helium (3%)',
-        funFact: 'Saturn has spectacular rings made of ice and rock particles',
-        nasaUrl: 'https://solarsystem.nasa.gov/planets/saturn/overview/'
-    },
-    uranus: {
-        name: 'Uranus',
-        icon: '🟣',
-        type: 'Ice Giant',
-        diameter: '51,118 km',
-        mass: '8.681 × 10²⁵ kg',
-        distance: '2.867 billion km from Sun',
-        orbitalPeriod: '84 Earth years',
-        dayLength: '17.2 hours',
-        temperature: '-197°C',
-        composition: 'Water, methane, ammonia ices',
-        funFact: 'Uranus rotates on its side at a 98-degree angle',
-        nasaUrl: 'https://solarsystem.nasa.gov/planets/uranus/overview/'
-    },
-    neptune: {
-        name: 'Neptune',
-        icon: '🔵',
-        type: 'Ice Giant',
-        diameter: '49,528 km',
-        mass: '1.024 × 10²⁶ kg',
-        distance: '4.515 billion km from Sun',
-        orbitalPeriod: '165 Earth years',
-        dayLength: '16.1 hours',
-        temperature: '-201°C',
-        composition: 'Water, methane, ammonia ices',
-        funFact: 'Neptune has the fastest winds in the solar system, up to 2,100 km/h',
-        nasaUrl: 'https://solarsystem.nasa.gov/planets/neptune/overview/'
-    }
-};
+// Menggunakan data planet terpusat dari planets-data.js
+const PLANET_DATA = PLANETS_DATA;
 
 // Global variabel
 let currentPlanet = null;
 
 // inisialisasi aplikasi
 function init() {
-    createStars();
     setupEventListeners();
     showDefaultPlanetInfo();
-}
-
-// membuat animasi bintang
-function createStars() {
-    const starsContainer = document.getElementById('stars');
-    const numberOfStars = 200;
-
-    for (let i = 0; i < numberOfStars; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = (Math.random() * 3) + 's';
-        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        starsContainer.appendChild(star);
-    }
 }
 
 // Setup event listeners
@@ -207,6 +67,7 @@ async function fetchAPOD() {
     button.disabled = true;
     button.textContent = '🔄 Loading...';
 
+    contentContainer.classList.remove('loaded');
     contentContainer.replaceChildren();
     const loadingDiv = document.createElement('div');
     loadingDiv.className = 'loading';
@@ -228,6 +89,7 @@ async function fetchAPOD() {
         renderAPOD(data);
     } catch (err) {
         console.error(err);
+        contentContainer.classList.remove('loaded');
         contentContainer.replaceChildren();
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error';
@@ -314,6 +176,7 @@ function renderAPOD(data) {
             media.appendChild(link);
     }
     contentContainer.appendChild(media);
+    contentContainer.classList.add('loaded');
 }
 
 
@@ -329,6 +192,7 @@ async function fetchSolarSystemOverview() {
     // Set untuk loading state
     button.disabled = true;
     button.textContent = '🔄 Loading...';
+    contentContainer.classList.remove('loaded');
     contentContainer.replaceChildren(); 
     const loadingDiv = document.createElement('div');
     loadingDiv.className = 'loading';
@@ -364,9 +228,11 @@ async function fetchSolarSystemOverview() {
         iframe.frameBorder = '0';
         iframe.allowFullscreen = true;
         contentContainer.appendChild(iframe);
+        contentContainer.classList.add('loaded');
 
     } catch (error) {
         console.error('Error loading solar system overview:', error);
+        contentContainer.classList.remove('loaded');
         contentContainer.replaceChildren(); 
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error';

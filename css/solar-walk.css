@@ -55,7 +55,7 @@
 
 .video-container {
     width: 100%;
-    height: 500px;
+    height: 150px;
     border-radius: 16px;
     overflow: hidden;
     position: relative;
@@ -65,6 +65,11 @@
     align-items: center;
     justify-content: center;
     box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.video-container.loaded {
+    height: 500px;
 }
 
 .video-container iframe {
@@ -369,7 +374,7 @@ audio {
         padding: 1.5rem;
     }
     
-    .video-container {
+    .video-container.loaded {
         height: 300px;
     }
     

@@ -1,23 +1,19 @@
+/**
+ * calculations.js
+ * Logic for calculations page. Uses centralized PLANETS_DATA.
+ */
+
+// Filter planets with valid orbital periods (exclude the Sun)
+const planetsCalculationData = Object.values(PLANETS_DATA).filter(planet => planet.period > 0);
+
 document.addEventListener('DOMContentLoaded', function() {
-    populateOrbitalDataTable(); // panggil function baru
+    populateOrbitalDataTable();
 
-    const planetsCalculationData = [
-        { name: "Mercury", period: 0.241, distance: "57.9 million km" },
-        { name: "Venus", period: 0.615, distance: "108.2 million km" },
-        { name: "Earth", period: 1.0, distance: "149.6 million km" },
-        { name: "Mars", period: 1.881, distance: "227.9 million km" },
-        { name: "Jupiter", period: 11.862, distance: "778.6 million km" },
-        { name: "Saturn", period: 29.456, distance: "1.432 billion km" },
-        { name: "Uranus", period: 84.07, distance: "2.867 billion km" },
-        { name: "Neptune", period: 164.81, distance: "4.515 billion km" },
-        { name: "Pluto", period: 248.1, distance: "5.906 billion km" }
-    ];
-
-    // Mengganti event listener dari tombol ke form
+    // Event listener from form submit
     const ageCalculatorForm = document.getElementById('age-calculator-form');
     if (ageCalculatorForm) {
         ageCalculatorForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Mencegah form melakukan submit default (reload halaman)
+            event.preventDefault(); // Prevent page reload on submit
             calculateAllPlanetaryAges();
         });
     }
@@ -32,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const resultsContainer = document.getElementById('calculator-results');
-        resultsContainer.replaceChildren(); // Menggunakan replaceChildren untuk menghapus hasil sebelumnya
+        resultsContainer.replaceChildren(); // Clear previous results
 
         planetsCalculationData.forEach(planet => {
             const planetAge = (earthAge / planet.period).toFixed(2);
@@ -66,36 +62,32 @@ function populateOrbitalDataTable() {
 
     tableBody.replaceChildren();
 
-    const planetsCalculationData = [
-        { name: "Mercury", period: 0.241, distance: "57.9 million km" },
-        { name: "Venus", period: 0.615, distance: "108.2 million km" },
-        { name: "Earth", period: 1.0, distance: "149.6 million km" },
-        { name: "Mars", period: 1.881, distance: "227.9 million km" },
-        { name: "Jupiter", period: 11.862, distance: "778.6 million km" },
-        { name: "Saturn", period: 29.456, distance: "1.432 billion km" },
-        { name: "Uranus", period: 84.07, distance: "2.867 billion km" },
-        { name: "Neptune", period: 164.81, distance: "4.515 billion km" },
-        { name: "Pluto", period: 248.1, distance: "5.906 billion km" }
-    ];
-
     planetsCalculationData.forEach(planet => {
         const row = document.createElement('tr');
 
+        // Name cell
         const nameCell = document.createElement('td');
         nameCell.textContent = planet.name;
+        nameCell.setAttribute('data-label', 'Planet');
         row.appendChild(nameCell);
 
+        // Period in years cell
         const periodYearsCell = document.createElement('td');
         periodYearsCell.textContent = planet.period.toFixed(3);
+        periodYearsCell.setAttribute('data-label', 'Orbital Period (Earth Years)');
         row.appendChild(periodYearsCell);
 
+        // Period in days cell
         const periodDaysCell = document.createElement('td');
         const periodInDays = (planet.period * 365.25).toFixed(2);
         periodDaysCell.textContent = periodInDays;
+        periodDaysCell.setAttribute('data-label', 'Orbital Period (Earth Days)');
         row.appendChild(periodDaysCell);
 
+        // Distance cell
         const distanceCell = document.createElement('td');
         distanceCell.textContent = planet.distance;
+        distanceCell.setAttribute('data-label', 'Distance from Sun');
         row.appendChild(distanceCell);
 
         tableBody.appendChild(row);
