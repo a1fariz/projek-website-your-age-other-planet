@@ -2,6 +2,8 @@
 
 Selamat datang di **Planetary Age Calculator**, sebuah website interaktif bertema luar angkasa yang dirancang untuk menghitung umur Anda di planet-planet lain dalam tata surya kita! 
 
+🚀 **Live Demo:** [solar-explorer.alfarizi.my.id](https://solar-explorer.alfarizi.my.id)
+
 Proyek ini dibuat menggunakan HTML, CSS (Vanilla), dan JavaScript, dengan mengusung antarmuka **Glassmorphism** modern, animasi yang mulus, dan desain responsif yang *eye-friendly*.
 
 ## ✨ Fitur Utama
@@ -45,9 +47,9 @@ Karena proyek ini sepenuhnya *static website*, Anda bisa menjalankannya dengan m
 3. **Gunakan Live Server (Sangat Disarankan)**:
    - Jika Anda menggunakan **Visual Studio Code**, instal ekstensi **Live Server**.
    - Klik kanan pada file `index.html` dan pilih **"Open with Live Server"**.
-   - Website akan otomatis terbuka di *browser* pada alamat `https://projek-website-your-age-other-plane.vercel.app/`.
+   - Website akan otomatis terbuka di *browser* pada alamat lokal (misalnya `http://127.0.0.1:5500/index.html`).
 4. **Buka Langsung (Alternatif)**:
-   - Anda juga dapat sekadar mengklik ganda (double-click) file `index.html` untuk membukanya secara lokal (alamat `https://projek-website-your-age-other-plane.vercel.app/`). 
+   - Anda juga dapat sekadar mengklik ganda (double-click) file `index.html` untuk membukanya secara lokal di browser Anda.
    - *Catatan: Semua path dalam proyek ini telah menggunakan relative paths (`./`, `../`) sehingga aman dibuka tanpa server sekalipun.*
 
 ## 📂 Struktur Direktori
