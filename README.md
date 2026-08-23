@@ -1,93 +1,98 @@
-# 🪐 Planetary Age Calculator (Solar Explorer)
+# 🪐 Planetary Age Calculator & Solar Explorer
 
-Selamat datang di **Planetary Age Calculator**, sebuah website interaktif bertema luar angkasa yang dirancang untuk menghitung umur Anda di planet-planet lain dalam tata surya kita! 
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
+  <img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/>
+  <img src="https://img.shields.io/badge/Design-Glassmorphism-9333EA?style=for-the-badge" alt="Glassmorphism"/>
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License"/>
+</p>
 
-🚀 **Live Demo:** [solar-explorer.alfarizi.my.id](https://solar-explorer.alfarizi.my.id)
+Selamat datang di **Planetary Age Calculator & Solar Explorer**, sebuah aplikasi web interaktif bertema penjelajahan antariksa modern yang dirancang untuk menghitung usia Anda di berbagai planet dalam tata surya serta menjelajahi fakta sains astronomi!
 
-Proyek ini dibuat menggunakan HTML, CSS (Vanilla), dan JavaScript, dengan mengusung antarmuka **Glassmorphism** modern, animasi yang mulus, dan desain responsif yang *eye-friendly*.
+🌐 **Live Demo:** [solar-explorer.alfarizi.my.id](https://solar-explorer.alfarizi.my.id) *(atau kunjungi [alfarizi.my.id](https://alfarizi.my.id))*
+
+---
 
 ## ✨ Fitur Utama
 
-- **Kalkulator Umur Antar-Planet**: Masukkan tanggal lahir Anda (di Earth) dan lihat secara instan umur Anda di Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, dan Pluto!
-- **Desain Modern & Responsif**: Menggunakan efek kaca buram (Glassmorphism), gradien warna luar angkasa yang elegan, dan optimalisasi tata letak yang tampil sempurna di layar desktop, tablet, maupun smartphone.
-- **Informasi Edukasi Tata Surya**: 
-  - 📖 **About**: Penjelasan konsep tahun dan hari di berbagai planet, serta perbandingan detail setiap planet.
-  - 🧮 **Calculations**: Penjelasan tentang rumus matematika dan logika di balik perhitungan umur planetary.
-  - 🚀 **Solar-Walk**: Penjelajahan tata surya interaktif dengan dukungan *fetch* data dari NASA API (APOD, NeoWs, dll).
-  - 🔗 **Resources**: Kumpulan sumber belajar tambahan terkait antariksa dan atribusi data NASA.
-- **Micro-Animations & Visuals**: Animasi bintang di latar belakang, animasi astronot melayang, dan interaksi *hover* yang hidup di setiap tombol dan kartu.
+- **Kalkulator Umur Antar-Planet**: Masukkan tanggal lahir Anda (di Bumi) dan hitung usia Anda secara presisi di Merkurius, Venus, Mars, Jupiter, Saturnus, Uranus, Neptunus, hingga Pluto.
+- **Desain Glassmorphism Modern**: Tampilan antarmuka transparan elegan dengan gradien warna luar angkasa, pencahayaan neon, dan tata letak responsif di desktop, tablet, maupun ponsel.
+- **Informasi Edukasi Tata Surya**:
+  - 📖 **About**: Penjelasan konsep periode revolusi dan rotasi planet serta perbandingan karakteristik fisik.
+  - 📐 **Calculations**: Rumus matematika dan logika astrofisika di balik konversi kalender planet.
+  - 🚀 **Solar-Walk**: Penjelajahan tata surya interaktif dilengkapi data astronomi dan multimedia.
+  - 📚 **Resources**: Direktori rujukan sumber belajar antariksa dan integrasi data portal NASA.
+- **Micro-Animations & Efek Visual**: Partikel bintang bergerak di latar belakang, animasi astronot melayang, dan interaksi hover 3D di setiap kartu planet.
+
+---
 
 ## 🛠️ Teknologi yang Digunakan
 
-- **HTML5**: Struktur semantik untuk seluruh halaman web.
-- **CSS3**: 
-  - *Vanilla CSS* tanpa *framework*.
-  - Menggunakan CSS Variables untuk konsistensi tema (Warna Deep Space, Cyan, Purple).
-  - Flexbox & CSS Grid untuk kemudahan *layout*.
-  - Media Queries untuk *Responsive Web Design* (Mobile-first adaptions).
-- **JavaScript (ES6)**: 
-  - Logika perhitungan matematika kalender.
-  - Manipulasi DOM (tampil-sembunyikan modal, isi dropdown otomatis).
-  - Navigasi hamburger menu pada layar *mobile*.
-  - (Opsional) *Fetch* API dari portal data NASA.
+- **HTML5**: Struktur halaman semantik dan aksesibel.
+- **CSS3 (Vanilla)**:
+  - Custom CSS Variables untuk tema Deep Space (Cyan, Indigo, Purple).
+  - Flexbox & CSS Grid modern untuk tata letak responsif.
+  - Efek `backdrop-filter: blur()` untuk aksen Glassmorphism.
+- **JavaScript (ES6+)**:
+  - Perhitungan matematika kalender revolusi orbit planet.
+  - Manipulasi DOM dinamis, modal dialog, dan navigasi menu responsif.
+  - Dukungan REST API antariksa (NASA APOD / NeoWs).
 
-## 🚀 Cara Menjalankan Proyek Secara Lokal
+---
 
-Karena proyek ini sepenuhnya *static website*, Anda bisa menjalankannya dengan mudah tanpa perlu instalasi server yang rumit:
+## 🚀 Cara Menjalankan Secara Lokal
 
-1. **Unduh atau Clone Repositori**:
+Karena proyek ini berbasis *static web*, Anda dapat menjalankannya langsung tanpa konfigurasi server backend:
+
+1. **Clone Repositori**:
    ```bash
-   git clone https://github.com/username-anda/ALFA_RIZI.git
+   git clone https://github.com/a1fariz/new.git
+   cd new
    ```
-2. **Buka Folder Proyek**:
-   Arahkan ke folder proyek di komputer Anda.
-   ```bash
-   cd ALFA_RIZI
-   ```
-3. **Gunakan Live Server (Sangat Disarankan)**:
-   - Jika Anda menggunakan **Visual Studio Code**, instal ekstensi **Live Server**.
-   - Klik kanan pada file `index.html` dan pilih **"Open with Live Server"**.
-   - Website akan otomatis terbuka di *browser* pada alamat lokal (misalnya `http://127.0.0.1:5500/index.html`).
-4. **Buka Langsung (Alternatif)**:
-   - Anda juga dapat sekadar mengklik ganda (double-click) file `index.html` untuk membukanya secara lokal di browser Anda.
-   - *Catatan: Semua path dalam proyek ini telah menggunakan relative paths (`./`, `../`) sehingga aman dibuka tanpa server sekalipun.*
 
-## 📂 Struktur Direktori
+2. **Jalankan dengan Live Server (Direkomendasikan)**:
+   - Buka direktori proyek di **Visual Studio Code**.
+   - Klik kanan pada `index.html` dan pilih **"Open with Live Server"**.
+   - Website akan terbuka di `http://127.0.0.1:5500`.
+
+3. **Buka Langsung di Browser**:
+   - Klik ganda file `index.html` untuk membuka langsung di browser web favorit Anda.
+
+---
+
+## 📁 Struktur Direktori
 
 ```text
 ALFA_RIZI/
-│
-├── index.html            # Halaman Beranda (Kalkulator Utama)
-├── README.md             # Dokumentasi Proyek ini
-├── README.txt            # (File kosong/opsional lama)
-│
+├── index.html            # Halaman Utama (Kalkulator Umur Planet)
+├── README.md             # Dokumentasi Proyek
 ├── html/                 # Halaman Sub-Menu
-│   ├── about.html
-│   ├── calculations.html
-│   ├── resources.html
-│   └── solar-walk.html
-│
-├── css/                  # Styling (CSS)
-│   ├── styles.css        # Global variables & Main Styles
+│   ├── about.html        # Fakta & Komparasi Planet
+│   ├── calculations.html # Penjelasan Rumus Matematika
+│   ├── resources.html    # Sumber Referensi & Atribusi
+│   └── solar-walk.html   # Eksplorasi Visual Tata Surya
+├── css/                  # Tata Gaya (CSS)
+│   ├── styles.css        # Variabel Global & Gaya Utama
 │   ├── about.css
 │   ├── calculations.css
 │   ├── resources.css
 │   ├── solar-walk.css
-│   └── assets/           # Gambar, video, dan ikon
+│   └── assets/           # Media Gambar & Video
 │       ├── ast.png
 │       └── video-tata-surya.mp4
-│
 └── js/                   # Logika Interaktif (JavaScript)
-    ├── script.js         # Logika Utama & Navigasi Mobile
+    ├── script.js         # Logika Utama Kalkulator & Mobile Nav
     ├── about.js
     ├── calculations.js
+    ├── planets-data.js
     ├── resources.js
     └── solar-walk.js
 ```
 
-## 🤝 Kontribusi & Feedback
-
-Proyek ini dibuat untuk tujuan edukasi. Jika Anda menemukan *bug* atau memiliki ide untuk menambah animasi planet, integrasi API NASA yang baru, atau perbaikan kode, jangan ragu untuk melakukan **Pull Request** atau membuka **Issue** di repositori GitHub ini.
-
 ---
-*Dibuat untuk menjelajahi bintang-bintang! 🌌*
+
+## 👨‍💻 Author
+
+Dikembangkan oleh **Muhammad Hafiz Alfarizi** ([@a1fariz](https://github.com/a1fariz)).  
+*Dibuat untuk menjelajahi keindahan tata surya dan sains astronomi! 🚀✨*
