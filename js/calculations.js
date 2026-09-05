@@ -1,94 +1,82 @@
 /**
- * calculations.js
- * Logic for calculations page. Uses centralized PLANETS_DATA.
+ * CALCULATIONS & KEPLER MATH ENGINE
+ * Controls real-time simulator slider and generates clean JPL data tables
+ * ponytail: Pure arithmetic, direct DOM mutation, zero dependencies
  */
 
-// Filter planets with valid orbital periods (exclude the Sun)
-const planetsCalculationData = Object.values(PLANETS_DATA).filter(planet => planet.period > 0);
+const planetsCalculations = Object.entries(PLANETS_DATA).filter(([_, p]) => p.period > 0);
 
-document.addEventListener('DOMContentLoaded', function() {
-    populateOrbitalDataTable();
+const VELOCITY_DATA = {
+    mercury: '47.4 km/s',
+    venus: '35.0 km/s',
+    earth: '29.8 km/s',
+    mars: '24.1 km/s',
+    jupiter: '13.1 km/s',
+    saturn: '9.7 km/s',
+    uranus: '6.8 km/s',
+    neptune: '5.4 km/s',
+    pluto: '4.7 km/s'
+};
 
-    // Event listener from form submit
-    const ageCalculatorForm = document.getElementById('age-calculator-form');
-    if (ageCalculatorForm) {
-        ageCalculatorForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent page reload on submit
-            calculateAllPlanetaryAges();
-        });
-    }
-
-    function calculateAllPlanetaryAges() {
-        const ageInput = document.getElementById('age-input');
-        const earthAge = parseFloat(ageInput.value);
-
-        if (isNaN(earthAge) || earthAge < 0) {
-            alert('Please enter a valid positive Earth age!');
-            return;
-        }
-
-        const resultsContainer = document.getElementById('calculator-results');
-        resultsContainer.replaceChildren(); // Clear previous results
-
-        planetsCalculationData.forEach(planet => {
-            const planetAge = (earthAge / planet.period).toFixed(2);
-
-            const resultCard = document.createElement('div');
-            resultCard.className = 'planet-result';
-
-            const h3 = document.createElement('h3');
-            h3.textContent = planet.name;
-
-            const planetAgeDiv = document.createElement('div');
-            planetAgeDiv.className = 'planet-age';
-            planetAgeDiv.textContent = planetAge;
-
-            const planetDetailsDiv = document.createElement('div');
-            planetDetailsDiv.className = 'planet-details';
-            planetDetailsDiv.textContent = 'years old';
-
-            resultCard.appendChild(h3);
-            resultCard.appendChild(planetAgeDiv);
-            resultCard.appendChild(planetDetailsDiv);
-
-            resultsContainer.appendChild(resultCard);
-        });
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    populateDataTable();
+    setupSimulator();
 });
 
-function populateOrbitalDataTable() {
+function setupSimulator() {
+    const slider = document.getElementById('sim-slider');
+    const label = document.getElementById('slider-earth-val');
+    const grid = document.getElementById('sim-results-grid');
+
+    if (!slider || !grid) return;
+
+    function updateSimulator() {
+        const earthYears = parseFloat(slider.value);
+        if (label) label.textContent = `${earthYears.toFixed(1)} Solar Years`;
+
+        grid.replaceChildren();
+
+        planetsCalculations.forEach(([key, planet]) => {
+            const age = earthYears / planet.period;
+            const decimals = planet.period < 1 ? 2 : 2;
+
+            const cell = document.createElement('div');
+            cell.className = 'sim-cell';
+            cell.innerHTML = `
+                <div class="sim-cell-name">${planet.name}</div>
+                <div class="sim-cell-val" style="color:${planet.color}">${age.toFixed(decimals)}</div>
+                <div class="sim-cell-unit">Years</div>
+            `;
+            grid.appendChild(cell);
+        });
+    }
+
+    slider.addEventListener('input', updateSimulator);
+    updateSimulator();
+}
+
+function populateDataTable() {
     const tableBody = document.querySelector('#orbital-table tbody');
     if (!tableBody) return;
 
     tableBody.replaceChildren();
 
-    planetsCalculationData.forEach(planet => {
+    planetsCalculations.forEach(([key, planet]) => {
         const row = document.createElement('tr');
+        const periodDays = (planet.period * 365.256).toFixed(1);
+        const vel = VELOCITY_DATA[key] || 'N/A';
 
-        // Name cell
-        const nameCell = document.createElement('td');
-        nameCell.textContent = planet.name;
-        nameCell.setAttribute('data-label', 'Planet');
-        row.appendChild(nameCell);
-
-        // Period in years cell
-        const periodYearsCell = document.createElement('td');
-        periodYearsCell.textContent = planet.period.toFixed(3);
-        periodYearsCell.setAttribute('data-label', 'Orbital Period (Earth Years)');
-        row.appendChild(periodYearsCell);
-
-        // Period in days cell
-        const periodDaysCell = document.createElement('td');
-        const periodInDays = (planet.period * 365.25).toFixed(2);
-        periodDaysCell.textContent = periodInDays;
-        periodDaysCell.setAttribute('data-label', 'Orbital Period (Earth Days)');
-        row.appendChild(periodDaysCell);
-
-        // Distance cell
-        const distanceCell = document.createElement('td');
-        distanceCell.textContent = planet.distance;
-        distanceCell.setAttribute('data-label', 'Distance from Sun');
-        row.appendChild(distanceCell);
+        row.innerHTML = `
+            <td>
+                <span class="table-symbol" style="color: ${planet.color}">${planet.symbol}</span>
+                <strong>${planet.name}</strong>
+            </td>
+            <td><code>${planet.symbol}</code></td>
+            <td>${planet.period.toFixed(3)}</td>
+            <td>${periodDays}</td>
+            <td>${planet.distance || 'N/A'}</td>
+            <td>${vel}</td>
+        `;
 
         tableBody.appendChild(row);
     });

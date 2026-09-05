@@ -3,131 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solar Explorer - Planetary Age Calculator</title>
-    <meta name="description" content="Calculate your exact age on Mars, Mercury, Venus, Jupiter, Saturn, Uranus, Neptune, and Pluto. Explore the solar system with real NASA educational data.">
-    <meta name="keywords" content="planetary age, calculator, solar system, nasa data, space education, age on other planets">
+    <title>Solar Explorer — Planetary Telemetry & Age Calculator</title>
+    <meta name="description" content="Calculate your exact age and orbital progress across all planets in the solar system using verified NASA orbital mechanics data.">
+    <meta name="keywords" content="planetary age, celestial mechanics, solar system telemetry, NASA orbital period, space explorer">
     <link rel="stylesheet" href="./css/styles.css">
-
 </head>
 <body>
-    <div class="stars" id="stars"></div>
+    <!-- Canvas Starfield Engine (Replaces heavy 100 DOM divs) -->
+    <canvas id="stars"></canvas>
 
-<header class="header">
-    <div class="logo">Solar Explorer</div>
-    
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+    <!-- Navigation HUD -->
+    <header class="header">
+        <a href="./index.html" class="brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+            <span class="brand-text">Solar Explorer</span>
+            <span class="brand-badge">JPL-DATA</span>
+        </a>
 
-    <ul class="nav-links">
-        <li><a href="./index.html" class="nav-link active">Home</a></li>
-        <li><a href="./html/about.html" class="nav-link">About</a></li>
-        <li><a href="./html/solar-walk.html" class="nav-link">SolarWalk</a></li>
-        <li><a href="./html/resources.html" class="nav-link">Resources</a></li>
-        <li><a href="./html/calculations.html" class="nav-link">Calculations</a></li>
-    </ul>
-</header>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
+        <nav>
+            <ul class="nav-links">
+                <li><a href="./index.html" class="nav-link active">Telemetry</a></li>
+                <li><a href="./html/solar-walk.html" class="nav-link">3D SolarWalk</a></li>
+                <li><a href="./html/calculations.html" class="nav-link">Kepler Math</a></li>
+                <li><a href="./html/about.html" class="nav-link">Orbital Data</a></li>
+                <li><a href="./html/resources.html" class="nav-link">NASA Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
     <main class="main-container">
-        <section class="hero-section">
-            <div class="content-wrapper">
-                <div class="text-content">
-                    <h1 class="title">How old would you be on other planets?</h1>
-                    <p class="description">
-                        Planets circle the Sun at different orbits and different speeds. They also 
-                        spin around their axis at a different pace, thus days and years pass 
-                        faster or slower there. Would you like to know what's your age on Mars 
-                        or saturn? 
-                        <br>Enter your birthdate to find out:
-                    </p>
-                    
-                    <div class="form-container">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <label for="month-select">Month</label>
-                                <select id="month-select" aria-label="birth mounth">
-                                    <option value="">MM</option>
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
-                                </select>
-                            </div>
-                            <div class="input-group">
-                                <label for="day-select">Day</label>
-                                <select id="day-select" aria-label="birth day">
-                                    <option value="">DD</option>
-                                </select>
-                            </div>
-                            <div class="input-group">
-                                <label for="year-select">Year</label>
-                                <select id="year-select" aria-label="birth year">
-                                    <option value="">YYYY</option>
-                                </select>
+        <!-- Hero Section -->
+        <section class="hero-grid">
+            <div class="hero-left">
+                <h1 class="hero-title">
+                    How old are you <br>
+                    <span class="highlight">on other planets?</span>
+                </h1>
+                <p class="hero-desc">
+                    Every planet orbits the Sun at a different speed — so time flows differently on each one.
+                    Enter your birthday and see your age on Mercury, Mars, Saturn, and beyond.
+                </p>
+
+                <!-- Input Card -->
+                <div class="telemetry-card">
+                    <div class="input-row">
+                        <div class="field-group">
+                            <label for="birthdate-input" class="field-label">Your Birthday</label>
+                            <div class="date-input-wrapper">
+                                <input type="date" id="birthdate-input" class="cosmic-input" aria-label="Enter your birth date">
                             </div>
                         </div>
-                        <button class="calculate-btn" id="calculate-age-btn">GO!</button>
+
+                        <div class="field-group">
+                            <label class="field-label">Try a quick preset</label>
+                            <div class="quick-chips">
+                                <button type="button" class="chip-btn" data-year-offset="20">20 yrs ago</button>
+                                <button type="button" class="chip-btn" data-year-offset="30">30 yrs ago</button>
+                                <button type="button" class="chip-btn" data-year-offset="45">45 yrs ago</button>
+                                <button type="button" class="chip-btn" data-preset="1969-07-20">Apollo 11, 1969</button>
+                                <button type="button" class="chip-btn" data-preset="2000-01-01">Y2K, 2000</button>
+                            </div>
+                        </div>
                     </div>
+
+                    <button type="button" id="btn-calculate" class="btn-launch">
+                        <span>Calculate My Age</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                    </button>
                 </div>
-                
-                <div class="astronaut-container">
-                    <div class="astronaut"></div>
+            </div>
+
+            <!-- Hero Visual (Orrery Canvas injected by hero-orrery.js) -->
+            <div class="hero-visual" aria-hidden="true"></div>
+        </section>
+
+        <!-- Planetary Telemetry Results Section (Smooth in-page reveal) -->
+        <section class="results-section" id="results-section" aria-live="polite">
+            <div class="results-header">
+                <div>
+                    <h2 class="results-title">Planetary Age Telemetry</h2>
+                    <p class="results-subtitle" id="results-summary">Live calculation based on solar orbital period ratio.</p>
                 </div>
+                <div class="results-live-clock" id="live-earth-age">
+                    EARTH AGE: --.-------- YEARS
+                </div>
+            </div>
+
+            <div class="planet-telemetry-grid" id="planet-telemetry-grid">
+                <!-- Planet cards dynamically populated via script.js -->
             </div>
         </section>
     </main>
 
-    <div class="results-container" id="results-container">
-        <div class="results-content">
-            <button class="close-btn" id="close-results-btn">&times;</button>
-            <h2 class="results-title">Your Age Across the Solar System</h2>
-            <div class="planet-grid" id="planet-grid">
-                </div>
-            <div class="results-footer-text">
-                <h3 class="birthday-message">🎂 More birthdays!</h3>
-                <p>
-                    Why celebrate your birthday only once a year? You have more! Enjoy your Mercurian, Venusian, and 
-                    Martian birthdays. Also rarer Jupiterian and Saturnian. And will you manage to live until your first 
-                    birthday on Uranus? Let's see when is that.
-                </p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>SOLAR EXPLORER</h3>
+                <p>High-precision astronomical educational tool tracking celestial periods, solar returns, and planetary mechanics based on official NASA Jet Propulsion Laboratory data.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="./index.html">Telemetry Dashboard</a></li>
+                    <li><a href="./html/solar-walk.html">3D Solar System Walk</a></li>
+                    <li><a href="./html/calculations.html">Orbital Math Formulas</a></li>
+                    <li><a href="./html/about.html">Planetary Factbook</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>NASA Open APIs</h4>
+                <ul>
+                    <li><a href="https://api.nasa.gov/" target="_blank" rel="noopener">Astronomy Picture of the Day</a></li>
+                    <li><a href="https://solarsystem.nasa.gov/" target="_blank" rel="noopener">NASA Solar System Eyes</a></li>
+                    <li><a href="https://ssd.jpl.nasa.gov/" target="_blank" rel="noopener">JPL Horizons Ephemeris</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Specification</h4>
+                <ul>
+                    <li>Standard: Keplerian Mechanics</li>
+                    <li>Earth Year: 365.256 Solar Days</li>
+                    <li>UI Standard: Awwwards Space-Tech</li>
+                </ul>
             </div>
         </div>
-    </div>
-
- <footer class="footer">
-        <div class="footer-content">
-             <div class="footer-section">
-                 <h3>Data Sources</h3>
-                 <ul>
-                     <li><a href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA</a></li>
-                     <li><a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA Open Data</a></li>
-                     <li><a href="https://solarsystem.nasa.gov/" target="_blank" rel="noopener">NASA Solar System</a></li>
-                 </ul>
-             </div>
-             <div class="footer-section">
-                 <h3>Educational Use</h3>
-                 <p>This tool is provided free for educational purposes under NASA's Open Data Policy.</p>
-             </div>
-             <div class="footer-section">
-                 <h3>Last Updated</h3>
-                 <p>July 2025</p>
-             </div>
-        </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Planetary Age Calculator. Educational purposes only. Data courtesy of NASA.</p>
+            <p>&copy; 2026 Solar Explorer. Built for astronomical exploration and scientific curiosity.</p>
+            <p>Developed by Muhammad Hafiz Alfarizi</p>
         </div>
     </footer>
+
+    <!-- Core Scripts -->
+    <script src="./js/starfield.js"></script>
     <script src="./js/planets-data.js"></script>
+    <script src="./js/hero-orrery.js"></script>
     <script src="./js/script.js"></script>
 </body>
 </html>

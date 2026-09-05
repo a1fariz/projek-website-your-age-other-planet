@@ -1,66 +1,29 @@
-/* ==========================================
-   FUNGSI SPESIFIK HALAMAN RESOURCES
-   ========================================== */
+/**
+ * RESOURCES & DISPATCH TERMINAL
+ * ponytail: Native submit handling with local acknowledgment, zero bloated toast libraries
+ */
 
-// Menangani pengiriman formulir umpan balik.
-function handleFeedbackFormSubmit(event) {
-    event.preventDefault(); // Mencegah pengiriman formulir default
-
-    const feedbackType = document.getElementById('feedback-type').value;
-    const feedbackMessage = document.getElementById('feedback-message').value;
-    const feedbackStatusMessage = document.getElementById('feedback-status-message');
+document.addEventListener('DOMContentLoaded', () => {
     const feedbackForm = document.getElementById('feedback-form');
+    if (!feedbackForm) return;
 
-    // pengiriman data (cuman simulasi)
-    console.log('Feedback Submitted:', { type: feedbackType, message: feedbackMessage });
+    feedbackForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    // Tampilkan pesan sukses menggunakan DOM manipulation
-    feedbackStatusMessage.replaceChildren(); 
+        const type = document.getElementById('feedback-type').value;
+        const msg = document.getElementById('feedback-message').value;
+        const statusEl = document.getElementById('feedback-status-message');
 
-    const successDiv = document.createElement('div');
-    successDiv.className = 'success-message';
+        statusEl.innerHTML = `
+            <div class="success-message">
+                ✓ Telemetry log successfully recorded [TYPE: ${type.toUpperCase()}]. Thank you for contributing to Solar Explorer precision.
+            </div>
+        `;
 
-    const p1 = document.createElement('p');
-    p1.textContent = '🎉 Terima kasih atas feedback Anda!';
-    successDiv.appendChild(p1);
+        feedbackForm.reset();
 
-    const p2 = document.createElement('p');
-    p2.textContent = 'Kami telah menerima pesan Anda dan akan menanggapinya segera.';
-    successDiv.appendChild(p2);
-
-    const pType = document.createElement('p');
-    pType.textContent = 'Tipe: ';
-    const strongType = document.createElement('strong');
-    strongType.textContent = feedbackType;
-    pType.appendChild(strongType);
-    successDiv.appendChild(pType);
-
-    const pMessage = document.createElement('p');
-    pMessage.textContent = 'Pesan: ';
-    const emMessage = document.createElement('em');
-    emMessage.textContent = `"${feedbackMessage}"`;
-    pMessage.appendChild(emMessage);
-    successDiv.appendChild(pMessage);
-
-    feedbackStatusMessage.appendChild(successDiv); // Menambahkan div sukses ke container
-    
-    // Reset formulir setelah pengiriman
-    feedbackForm.reset();
-
-    // Hapus pesan sukses setelah beberapa detik
-    setTimeout(() => {
-        feedbackStatusMessage.replaceChildren(); 
-    }, 5000); 
-}
-
-/* ==========================================
-   EVENT LISTENERS & INISIALISASI
-   ========================================== */
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Event listener untuk formulir umpan balik
-    const feedbackForm = document.getElementById('feedback-form');
-    if (feedbackForm) {
-        feedbackForm.addEventListener('submit', handleFeedbackFormSubmit);
-    }
+        setTimeout(() => {
+            statusEl.innerHTML = '';
+        }, 6000);
+    });
 });

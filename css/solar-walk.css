@@ -1,393 +1,431 @@
-/* ==========================================
-   SOLAR-WALK PAGE SPECIFIC STYLES
-   ========================================== */
+/* ==========================================================
+   SOLAR-WALK SPECIFIC HUD STYLES (AEROSPACE MONOCHROME)
+   ========================================================== */
 
-.nasa-video-section {
-    background: var(--glass-bg);
-    border-radius: 24px;
-    padding: 2.5rem;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--glass-border);
-    margin-bottom: 4rem;
-    box-shadow: var(--glass-shadow);
+.page-heading {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 3rem;
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+}
+
+.page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+    line-height: 1.6;
+}
+
+/* 3D Simulation Container */
+.solar-3d-box {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background: #090a0f;
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 3.5rem;
+}
+
+#three-stage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.stage-guide {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(9, 10, 15, 0.85);
+    border: 1px solid var(--border-subtle);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    pointer-events: none;
+    z-index: 10;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.stage-bar {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(9, 10, 15, 0.92);
+    border: 1px solid var(--border-subtle);
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    z-index: 10;
+}
+
+.stage-btn {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.stage-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--border-active);
+}
+
+.stage-btn.active {
+    background: var(--bg-overlay);
+    border-color: var(--border-focus);
+    color: var(--text-primary);
+}
+
+.stage-speed-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.stage-speed-box input[type="range"] {
+    width: 80px;
+    cursor: pointer;
+    accent-color: var(--text-primary);
+}
+
+/* NASA Panel */
+.nasa-telemetry-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 3.5rem;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.8rem;
+}
+
+.panel-title {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.panel-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
 }
 
 .controls-panel {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
+    gap: 0.6rem;
     flex-wrap: wrap;
 }
 
 .control-btn {
-    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
-    border: none;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    font-size: 1.05rem;
-    font-weight: 700;
+    background: var(--accent-primary);
+    color: var(--accent-on-primary);
+    border: 1px solid #ffffff;
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.6rem 1.15rem;
+    border-radius: 4px;
     cursor: pointer;
-    transition: var(--transition);
-    box-shadow: 0 8px 20px rgba(79, 172, 254, 0.3);
+    transition: var(--transition-fast);
 }
 
 .control-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 25px rgba(79, 172, 254, 0.4);
-    filter: brightness(1.1);
+    background: #e2e8f0;
 }
 
-.control-btn:active {
-    transform: translateY(1px);
+.control-btn.secondary {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
 }
 
-.control-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-    filter: grayscale(1);
+.control-btn.secondary:hover {
+    border-color: var(--border-active);
+}
+
+.observatory-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 2rem;
 }
 
 .video-container {
     width: 100%;
-    height: 150px;
-    border-radius: 16px;
+    height: 380px;
+    background: #06070a;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
     overflow: hidden;
-    position: relative;
-    background: radial-gradient(ellipse at center, rgba(15, 15, 35, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
-    border: 1px solid var(--glass-border);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
-    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.video-container.loaded {
-    height: 500px;
-}
-
-.video-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.video-container img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    border-radius: 12px;
 }
 
 .loading-placeholder {
     color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
     text-align: center;
     padding: 2rem;
-    font-size: 1.1rem;
 }
 
 .video-info {
-    margin-top: 2rem;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.85rem;
 }
 
 .video-title {
-    font-size: 1.8rem;
-    color: var(--accent-blue);
-    margin-bottom: 1rem;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
     font-weight: 700;
 }
 
 .video-description {
-    color: var(--text-muted);
-    line-height: 1.7;
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.05rem;
-}
-
-/* ==========================================
-   PLANET SELECTION PANEL
-   ========================================== */
-.planet-selection {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-top: 4rem;
-}
-
-@media (min-width: 992px) {
-    .planet-selection {
-        grid-template-columns: 350px 1fr;
-    }
-}
-
-.planet-grid {
-    background: var(--glass-bg);
-    border-radius: 24px;
-    padding: 2.5rem;
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    height: fit-content;
-}
-
-.planet-grid h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--accent-cyan);
-    font-size: 1.8rem;
-}
-
-.planet-buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 1rem;
-}
-
-.planet-btn {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--glass-border);
-    color: var(--text-main);
-    padding: 1rem 0.5rem;
-    border-radius: 16px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.planet-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.planet-btn.active {
-    background: linear-gradient(135deg, rgba(79, 172, 254, 0.2) 0%, rgba(0, 242, 254, 0.2) 100%);
-    border-color: var(--accent-cyan);
-    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
-    color: #fff;
-}
-
-.planet-icon {
-    font-size: 2.2rem;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
-    transition: transform 0.3s ease;
-}
-
-.planet-btn:hover .planet-icon {
-    transform: scale(1.1);
-}
-
-/* ==========================================
-   PLANET INFO PANEL
-   ========================================== */
-.planet-info {
-    background: var(--glass-bg);
-    border-radius: 24px;
-    padding: 2.5rem;
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-}
-
-.planet-info h2 {
-    color: var(--accent-purple);
-    margin-bottom: 2rem;
-    font-size: 1.8rem;
-    text-align: center;
-}
-
-.planet-details {
-    display: none;
-}
-
-.planet-details.active {
-    display: block;
-    animation: fadeIn 0.5s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.planet-header {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--glass-border);
-}
-
-.planet-header .planet-icon {
-    font-size: 4rem;
-}
-
-.planet-header h3 {
-    font-size: 2.5rem;
-    color: #fff;
-    font-weight: 800;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-}
-
-.info-item {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 1.5rem;
-    border-radius: 16px;
-    border-left: 4px solid var(--accent-blue);
-    transition: var(--transition);
-}
-
-.info-item:hover {
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateX(5px);
-}
-
-.info-item h4 {
-    color: var(--accent-cyan);
-    margin-bottom: 0.8rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.info-item p {
-    color: var(--text-main);
+    color: var(--text-secondary);
+    font-size: 0.92rem;
     line-height: 1.6;
 }
 
-.info-item img {
-    width: 100%;
-    border-radius: 12px;
-    margin-top: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.loading {
-    text-align: center;
-    padding: 3rem;
-    color: var(--text-muted);
-    font-size: 1.2rem;
-}
-
-.loading::after {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    border: 3px solid rgba(79, 172, 254, 0.3);
-    border-top: 3px solid var(--accent-blue);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-left: 15px;
-    vertical-align: middle;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.error {
-    color: #ff6b6b;
-    background: rgba(255, 107, 107, 0.1);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border-left: 4px solid #ff6b6b;
-    margin: 1.5rem 0;
-    text-align: center;
-}
-
-.nasa-link {
-    display: inline-block;
-    margin-top: 1.5rem;
-    color: white;
-    text-decoration: none;
-    padding: 0.8rem 1.5rem;
-    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
-    border-radius: 12px;
-    font-weight: 600;
-    transition: var(--transition);
-    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.2);
-}
-
-.nasa-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(79, 172, 254, 0.4);
-    filter: brightness(1.1);
-}
-
 .apod-date {
-    color: var(--accent-purple);
-    font-size: 1rem;
-    margin-top: 1.5rem;
-    text-align: center;
-    font-weight: 500;
-}
-
-.apod-copyright {
+    display: block;
+    margin-top: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
+}
+
+/* Planet Selector & Details */
+.planet-selection-section {
+    margin-bottom: 2rem;
+}
+
+.inspector-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.planet-selector-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.planet-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-align: left;
+}
+
+.planet-btn .symbol {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    width: 22px;
     text-align: center;
 }
 
-.fallback-media {
+.planet-btn:hover {
+    background: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    border-color: var(--border-active);
+}
+
+.planet-btn.active {
+    background: var(--bg-surface-elevated);
+    border-color: var(--border-focus);
+    color: var(--text-primary);
+}
+
+.planet-info-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 1.8rem;
+}
+
+.planet-spec-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.8rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.planet-spec-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    font-size: 1.2rem;
-    text-align: center;
-    padding: 2rem;
+    font-size: 1.6rem;
+    font-family: var(--font-mono);
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+}
+
+.planet-spec-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.planet-spec-type {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.spec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+}
+
+.spec-cell {
+    background: #0d0e14;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 0.85rem;
+    display: flex;
     flex-direction: column;
+    gap: 0.3rem;
 }
 
-audio {
-    border-radius: 12px;
-    margin: 20px auto;
-    display: block;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+.spec-cell-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
-    .nasa-video-section, .planet-grid, .planet-info {
-        padding: 1.5rem;
-    }
-    
-    .video-container.loaded {
-        height: 300px;
-    }
-    
-    .planet-header h3 {
-        font-size: 2rem;
-    }
-    
-    .planet-buttons {
-        grid-template-columns: repeat(3, 1fr);
-    }
+.spec-cell-val {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
 }
-@media (max-width: 480px) {
-    .planet-buttons {
+
+.spec-fact-box {
+    background: var(--bg-surface-elevated);
+    border-left: 2px solid var(--border-active);
+    padding: 1rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 1.5rem;
+}
+
+.spec-fact-box h4 {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.04em;
+}
+
+.spec-fact-box p {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.btn-nasa-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.btn-nasa-link:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .observatory-grid {
+        grid-template-columns: 1fr;
+    }
+    .inspector-layout {
+        grid-template-columns: 1fr;
+    }
+    .planet-selector-bar {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+    }
+    .planet-btn {
+        white-space: nowrap;
+    }
+    .spec-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .solar-3d-box {
+        height: 420px;
+    }
+    .spec-grid {
+        grid-template-columns: 1fr;
+    }
+    .stage-bar {
+        width: 92%;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }

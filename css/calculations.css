@@ -1,465 +1,197 @@
-/* =============== CALCULATIONS PAGE =============== */
-.calculations-content {
-    padding: 2.5rem; 
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 24px;
-    border: 1px solid var(--glass-border);
-    margin-top: 2rem;
-    box-shadow: var(--glass-shadow);
-}
+/* ==========================================================
+   KEPLER MATH & CALCULATIONS STYLES (AEROSPACE MONOCHROME)
+   ========================================================== */
 
-.formula-section, .step-by-step-section, .orbital-data-section, .interactive-calculator, .example-section, .accuracy-note {
-    text-align: center;
-    margin-bottom: 4.5rem;
-}
-
-.formula-section h2, .step-by-step-section h2, .orbital-data-section h2, .interactive-calculator h2, .example-section h2, .accuracy-note h2 {
-    font-size: 2.2rem;
-    color: var(--accent-cyan);
-    margin-bottom: 2rem;
-    font-weight: 700;
-}
-
-.formula-display {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-}
-
-.formula-box {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 2.5rem;
-    border-radius: 20px;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    display: inline-block;
-    justify-content: center;
-}
-
-.formula-box h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    color: var(--accent-blue);
-    font-weight: 600;
-}
-
-.fraction {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-main);
-}
-
-.numerator {
-    padding-bottom: 0.8rem;
-    border-bottom: 2px solid var(--glass-border);
-    margin-bottom: 0.8rem;
-    color: var(--accent-purple);
-}
-
-.denominator {
-    padding-top: 0.5rem;
-}
-
-.formula-explanation {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-.steps-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.step-item {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 2rem;
-    border-radius: 20px;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    transition: var(--transition);
-}
-
-.step-item:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.step-number {
-    min-width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: #fff;
-    flex-shrink: 0;
-    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(79, 172, 254, 0.3);
-}
-
-.step-content {
-    text-align: left;
-    width: 100%;
-    min-width: 0;
-}
-
-.step-content h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.8rem;
-    color: var(--accent-blue);
-}
-
-.step-content p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-muted);
-    margin-bottom: 1.2rem;
-}
-
-.code-snippet-wrapper {
-    background: rgba(0, 0, 0, 0.4);
-    padding: 1rem;
-    border-radius: 12px;
-    overflow-x: auto;
-    border: 1px solid var(--glass-border);
-}
-
-.code-snippet-wrapper code {
-    font-family: 'Fira Code', Consolas, monospace;
-    font-size: 0.9rem;
-    color: var(--accent-cyan);
-    white-space: nowrap;
-}
-
-/* ==========================================
-   ORBITAL DATA
-   ========================================== */
-.data-table-container {
-    overflow-x: auto;
-    border-radius: 16px;
-    border: 1px solid var(--glass-border);
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.orbital-table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
-}
-
-.orbital-table th,
-.orbital-table td {
-    padding: 1.2rem 1.5rem;
-    text-align: left;
-    border-bottom: 1px solid var(--glass-border);
-    color: var(--text-main);
-}
-
-.orbital-table th {
-    background: rgba(255, 255, 255, 0.05);
-    font-weight: 600;
-    color: var(--accent-blue);
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-}
-
-.orbital-table tr:last-child td {
-    border-bottom: none;
-}
-
-.orbital-table tbody tr {
-    transition: var(--transition);
-}
-
-.orbital-table tbody tr:hover {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-/* ==========================================
-   INTERACTIVE CALCULATOR
-   ========================================== */
-.calculator-container {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 2.5rem;
-    border-radius: 20px;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.calculator-input {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
-    align-items: flex-end;
-    justify-content: center;
-}
-
-.calculator-input-group {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    min-width: 200px;
-    text-align: left;
-}
-
-.calculator-input label {
-    font-size: 1rem;
-    margin-bottom: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 500;
-}
-
-.calculator-input input[type="number"] {
-    padding: 1rem;
-    border-radius: 12px;
-    border: 1px solid var(--glass-border);
-    background: rgba(0, 0, 0, 0.2);
-    color: white;
-    font-size: 1.1rem;
-    transition: var(--transition);
-    width: 100%;
-}
-
-.calculator-input input[type="number"]:focus {
-    outline: none;
-    border-color: var(--accent-blue);
-    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2);
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.calc-btn {
-    padding: 1rem 2.5rem;
-    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
-    border: none;
-    border-radius: 12px;
-    color: white;
-    font-weight: 700;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: var(--transition);
-    min-width: 200px;
-    box-shadow: 0 8px 20px rgba(79, 172, 254, 0.3);
-}
-
-.calc-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 25px rgba(79, 172, 254, 0.4);
-    filter: brightness(1.1);
-}
-
-.calculator-results {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 1.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--glass-border);
-}
-
-/* ==========================================
-   PLANET RESULT
-   ========================================== */
-.planet-result {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 1.5rem 1rem;
-    border-radius: 16px;
-    text-align: center;
-    border: 1px solid var(--glass-border);
-    transition: var(--transition);
-}
-
-.planet-result:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.planet-result h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
-    color: var(--accent-blue);
-}
-
-.planet-result .planet-age {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 0.5rem;
-}
-
-.planet-result .planet-details {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
-/* ==========================================
-   EXAMPLES & NOTES
-   ========================================== */
-.example-container {
+.calc-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 2.5rem;
-    border-radius: 20px;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    text-align: left;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
 }
 
-.example-problem,
-.example-solution {
-    padding: 2rem;
-    border-radius: 16px;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--glass-border);
+.calc-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 1.8rem;
 }
 
-.example-problem h3,
-.example-solution h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--accent-blue);
+.calc-card-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--text-primary);
 }
 
-.example-problem p,
-.example-solution p,
-.example-solution ul {
+.calc-card-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+}
+
+.formula-display-hud {
+    background: #0d0e14;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    font-family: var(--font-mono);
+    margin-bottom: 1.1rem;
+}
+
+.formula-target {
     font-size: 1.05rem;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.formula-fraction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.formula-num {
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--border-active);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.formula-den {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.formula-notes {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
     line-height: 1.6;
-    color: var(--text-main);
 }
 
-.example-solution ul {
-    margin-left: 1.5rem;
-    margin-bottom: 1.5rem;
+/* Interactive Simulator */
+.calc-simulator {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
 }
 
-.example-solution ul li {
-    margin-bottom: 0.5rem;
+.sim-slider-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.accuracy-note-content {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 2.5rem;
-    border-radius: 20px;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    max-width: 900px;
-    margin: 0 auto;
+.sim-slider-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+
+.sim-slider-header span:last-child {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.sim-slider {
+    width: 100%;
+    cursor: pointer;
+    accent-color: var(--text-primary);
+}
+
+.sim-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.65rem;
+    margin-top: 0.85rem;
+}
+
+.sim-cell {
+    background: #0d0e14;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 0.75rem 0.55rem;
+    text-align: center;
+    font-family: var(--font-mono);
+}
+
+.sim-cell-name {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.sim-cell-val {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0.15rem 0;
+}
+
+.sim-cell-unit {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+/* Data Table */
+.data-table-section {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 1.25rem;
+}
+
+.telemetry-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
     text-align: left;
 }
 
-.accuracy-note-content p {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
+.telemetry-table th {
+    background: #0d0e14;
+    padding: 0.75rem 0.9rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-subtle);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.72rem;
 }
 
-.accuracy-note-content p:last-child {
-    margin-bottom: 0;
+.telemetry-table td {
+    padding: 0.8rem 0.9rem;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
 }
 
-/* ==========================================
-   RESPONSIVE
-   ========================================== */
-@media (max-width: 992px) {
-    .example-container {
+.telemetry-table tr:hover td {
+    background: var(--bg-surface-elevated);
+    color: var(--text-primary);
+}
+
+.table-symbol {
+    display: inline-block;
+    width: 20px;
+    margin-right: 0.45rem;
+    color: var(--text-primary);
+}
+
+@media (max-width: 900px) {
+    .calc-grid {
         grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .calculations-content {
-        padding: 1.5rem;
-    }
-
-    .step-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-
-    .formula-section h2, .step-by-step-section h2, .orbital-data-section h2, .interactive-calculator h2, .example-section h2, .accuracy-note h2 {
-        font-size: 1.8rem;
-    }
-
-    .data-table-container {
-        border-radius: 12px;
-    }
-
-    .orbital-table thead {
-        display: none;
-    }
-
-    .orbital-table tr {
-        display: block;
-        border-bottom: 1px solid var(--glass-border);
-        padding: 1rem;
-    }
-    
-    .orbital-table tr:last-child {
-        border-bottom: none;
-    }
-
-    .orbital-table td {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: right;
-        padding: 0.8rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .orbital-table td:last-child {
-        border-bottom: none;
-    }
-
-    .orbital-table td::before {
-        content: attr(data-label);
-        font-weight: 600;
-        color: var(--accent-blue);
-        text-align: left;
-        margin-right: 1rem;
-    }
-
-    .calculator-input {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .calc-btn {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .formula-box, .example-container, .accuracy-note-content, .calculator-container {
-        padding: 1.5rem;
-    }
-    
-    .fraction {
-        font-size: 1.2rem;
     }
 }

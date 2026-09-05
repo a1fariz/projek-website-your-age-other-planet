@@ -3,142 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Solar System - Solar Explorer</title>
-    <meta name="description" content="Explore our Solar System in 3D using real NASA data. Check out the NASA Astronomy Picture of the Day (APOD) and get planetary overviews.">
-    <meta name="keywords" content="solar system map, interactive space explorer, NASA APOD, planetary exploration">
+    <title>Interactive 3D Solar Walk — Solar Explorer</title>
+    <meta name="description" content="Explore the Solar System in interactive real-time 3D with celestial orbital telemetry and NASA multimedia.">
+    <meta name="keywords" content="3d solar system, three.js solar walk, planetary telemetry, NASA APOD">
+    
+    <!-- Three.js & GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/solar-walk.css">
 </head>
 <body>
-    <!-- Animated stars background -->
-    <div class="stars" id="stars"></div>
+    <canvas id="stars"></canvas>
 
-    <!-- Header -->
-<header class="header">
-    <div class="logo">Solar Explorer</div>
-    
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+    <!-- Navigation HUD -->
+    <header class="header">
+        <a href="../index.html" class="brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+            <span class="brand-text">Solar Explorer</span>
+            <span class="brand-badge">3D ENGINE</span>
+        </a>
 
-    <ul class="nav-links">
-        <li><a href="../index.html" class="nav-link">Home</a></li>
-        <li><a href="./about.html" class="nav-link">About</a></li>
-        <li><a href="./solar-walk.html" class="nav-link active">SolarWalk</a></li>
-        <li><a href="./resources.html" class="nav-link">Resources</a></li>
-        <li><a href="./calculations.html" class="nav-link">Calculations</a></li>
-    </ul>
-</header>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-         <main class="main-container">
-        <section class="page-section active">
-            <div class="content-wrapper single-column">
-                <header class="page-header">
-                    <h1 class="section-title">Interactive 3D Solar System</h1>
-                    <p class="section-subtitle">Explore our solar system in stunning 3D with real NASA data and detailed planetary information</p>
-                </header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Telemetry</a></li>
+                <li><a href="./solar-walk.html" class="nav-link active">3D SolarWalk</a></li>
+                <li><a href="./calculations.html" class="nav-link">Kepler Math</a></li>
+                <li><a href="./about.html" class="nav-link">Orbital Data</a></li>
+                <li><a href="./resources.html" class="nav-link">NASA Portal</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <div class="nasa-video-section">
-            <div class="controls-panel">
-                <button id="fetch-apod-btn" class="control-btn">🚀 Get NASA Picture of the Day</button>
-                <button id="fetch-solar-system-btn" class="control-btn">🌟 Solar System Overview</button>
-            </div>
+    <main class="main-container">
+        <header class="page-heading">
+            <h1 class="page-title">Interactive 3D Solar System</h1>
+            <p class="page-subtitle">Inspect planetary orbits, scale ratios, and physical characteristics. Click any celestial body to focus the camera.</p>
+        </header>
+
+        <!-- 3D Orrery Stage -->
+        <div class="solar-3d-box">
+            <div id="three-stage"></div>
+            <div class="stage-guide">Click any planet in 3D or use the HUD below</div>
             
-            <div class="video-container" id="nasa-content">
-                <div class="loading-placeholder">
-                    <p>Click the buttons above to load NASA content</p>
+            <div class="stage-bar">
+                <button type="button" class="stage-btn" id="btn-pause-sim">❚❚ Pause</button>
+                <div class="stage-speed-box">
+                    <label for="slider-speed">Velocity</label>
+                    <input type="range" id="slider-speed" min="0.1" max="5" step="0.1" value="1.0">
+                    <span id="label-speed">1.0x</span>
                 </div>
-            </div>
-            
-            <div class="video-info" id="content-info">
-                <div class="video-title" id="content-title">NASA Astronomy Content</div>
-                <div class="video-description" id="content-description">
-                    Discover amazing astronomical phenomena and solar system insights from NASA
-                </div>
+                <button type="button" class="stage-btn active" id="btn-trails-sim">Orbit Trails: ON</button>
+                <button type="button" class="stage-btn" id="btn-reset-view">Full System Overview</button>
             </div>
         </div>
 
-        <div class="planet-selection">
-            <div class="planet-grid">
-                <h2>Select a Planet to Explore</h2>
-                <div class="planet-buttons">
-                    <button class="planet-btn" data-planet="sun">
-                        <div class="planet-icon">☀️</div>
-                        <span>Sun</span>
-                    </button>
-                    <button class="planet-btn" data-planet="mercury">
-                        <div class="planet-icon">🟠</div>
-                        <span>Mercury</span>
-                    </button>
-                    <button class="planet-btn" data-planet="venus">
-                        <div class="planet-icon">🔴</div>
-                        <span>Venus</span>
-                    </button>
-                    <button class="planet-btn" data-planet="earth">
-                        <div class="planet-icon">🌍</div>
-                        <span>Earth</span>
-                    </button>
-                    <button class="planet-btn" data-planet="mars">
-                        <div class="planet-icon">🟠</div>
-                        <span>Mars</span>
-                    </button>
-                    <button class="planet-btn" data-planet="jupiter">
-                        <div class="planet-icon">🟤</div>
-                        <span>Jupiter</span>
-                    </button>
-                    <button class="planet-btn" data-planet="saturn">
-                        <div class="planet-icon">🪐</div>
-                        <span>Saturn</span>
-                    </button>
-                    <button class="planet-btn" data-planet="uranus">
-                        <div class="planet-icon">🟣</div>
-                        <span>Uranus</span>
-                    </button>
-                    <button class="planet-btn" data-planet="neptune">
-                        <div class="planet-icon">🔵</div>
-                        <span>Neptune</span>
-                    </button>
+        <!-- NASA APOD & Observatory Section -->
+        <section class="nasa-telemetry-panel">
+            <div class="panel-header">
+                <div>
+                    <h2 class="panel-title">NASA Deep Space Observations</h2>
+                    <p class="panel-desc">Real-time media and imagery fetched directly from NASA Open Science archives.</p>
+                </div>
+                <div class="controls-panel">
+                    <button type="button" id="fetch-apod-btn" class="control-btn">Fetch NASA APOD</button>
+                    <button type="button" id="fetch-solar-system-btn" class="control-btn secondary">Solar System Flyby</button>
                 </div>
             </div>
 
-            <div class="planet-info">
-                <h2>Planet Information</h2>
-                <div id="planet-info-content">
+            <div class="observatory-grid">
+                <div class="video-container" id="nasa-content">
                     <div class="loading-placeholder">
-                        <p>Select a planet from the left to view detailed information powered by NASA data</p>
+                        <p>Click "Fetch NASA APOD" or "Solar System Flyby" to stream live astronomical feeds.</p>
+                    </div>
+                </div>
+                <div class="video-info" id="content-info">
+                    <div class="video-title" id="content-title">NASA Observation Console</div>
+                    <div class="video-description" id="content-description">
+                        Astronomical telemetry ready for observation. Select a feed above.
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
+        <!-- Planet Selector & Inspector Section -->
+        <section class="planet-selection-section">
+            <h2 class="panel-title">Celestial Body Inspector</h2>
+            <div class="inspector-layout">
+                <div class="planet-selector-bar">
+                    <button type="button" class="planet-btn" data-planet="sun">
+                        <span class="symbol">☉</span><span>Sun</span>
+                    </button>
+                    <button type="button" class="planet-btn" data-planet="mercury">
+                        <span class="symbol">☿</span><span>Mercury</span>
+                    </button>
+                    <button type="button" class="planet-btn" data-planet="venus">
+                        <span class="symbol">♀</span><span>Venus</span>
+                    </button>
+                    <button type="button" class="planet-btn active" data-planet="earth">
+                        <span class="symbol">♁</span><span>Earth</span>
+                    </button>
+                    <button type="button" class="planet-btn" data-planet="mars">
+                        <span class="symbol">♂</span><span>Mars</span>
+                    </button>
+                    <button type="button" class="planet-btn" data-planet="jupiter">
+                        <span class="symbol">♃</span><span>Jupiter</span>
+                    </button>
+                    <button type="button" class="planet-btn" data-planet="saturn">
+                        <span class="symbol">♄</span><span>Saturn</span>
+                    </button>
+                    <button type="button" class="planet-btn" data-planet="uranus">
+                        <span class="symbol">♅</span><span>Uranus</span>
+                    </button>
+                    <button type="button" class="planet-btn" data-planet="neptune">
+                        <span class="symbol">♆</span><span>Neptune</span>
+                    </button>
+                </div>
 
-     <footer class="footer">
-        <div class="footer-content">
-             <div class="footer-section">
-                 <h3>Data Sources</h3>
-                 <ul>
-                     <li><a href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA</a></li>
-                     <li><a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA Open Data</a></li>
-                     <li><a href="https://solarsystem.nasa.gov/" target="_blank" rel="noopener">NASA Solar System</a></li>
-                 </ul>
-             </div>
-             <div class="footer-section">
-                 <h3>Educational Use</h3>
-                 <p>This tool is provided free for educational purposes under NASA's Open Data Policy.</p>
-             </div>
-             <div class="footer-section">
-                 <h3>Last Updated</h3>
-                 <p>July 2025</p>
-             </div>
+                <div class="planet-info-card" id="planet-info-content">
+                    <!-- Populated dynamically by solar-walk.js -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>SOLAR EXPLORER</h3>
+                <p>Interactive 3D planetary physics engine utilizing WebGL and NASA Horizons ephemerides.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="../index.html">Telemetry Dashboard</a></li>
+                    <li><a href="./solar-walk.html">3D SolarWalk</a></li>
+                    <li><a href="./calculations.html">Kepler Math</a></li>
+                    <li><a href="./about.html">Orbital Data</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>NASA Open APIs</h4>
+                <ul>
+                    <li><a href="https://api.nasa.gov/" target="_blank" rel="noopener">Astronomy Picture of the Day</a></li>
+                    <li><a href="https://solarsystem.nasa.gov/" target="_blank" rel="noopener">NASA Solar System Eyes</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Engine Status</h4>
+                <ul>
+                    <li>Renderer: WebGL / Three.js r128</li>
+                    <li>Orrery Speed: Real-Time Scaled</li>
+                    <li>Coordinates: Helicosm Heliocentric</li>
+                </ul>
+            </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Planetary Age Calculator. Educational purposes only. Data courtesy of NASA.</p>
+            <p>&copy; 2026 Solar Explorer. Data courtesy of NASA Jet Propulsion Laboratory.</p>
+            <p>Developed by Muhammad Hafiz Alfarizi</p>
         </div>
     </footer>
-    
+
+    <!-- Scripts -->
+    <script src="../js/starfield.js"></script>
     <script src="../js/planets-data.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/solar-walk.js"></script>

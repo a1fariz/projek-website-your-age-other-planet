@@ -3,192 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Age Calculations - Solar Explorer</title>
-    <meta name="description" content="Learn the mathematics behind planetary age conversion. Read the formulas and calculations used to find your age on other planets.">
-    <meta name="keywords" content="planetary age formula, orbital period calculation, math space science">
+    <title>Kepler Math & Planetary Calculations — Solar Explorer</title>
+    <meta name="description" content="Discover the mathematics behind planetary time conversions. Explore Kepler's Third Law and calculate orbital periods across our solar system.">
+    <meta name="keywords" content="Kepler orbital mechanics, planetary age math, sidereal year formula, astronomical calculations">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/calculations.css">
-
-
 </head>
 <body>
-    <div class="stars" id="stars"></div>
+    <canvas id="stars"></canvas>
 
-<header class="header">
-    <div class="logo">Solar Explorer</div>
-    
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+    <!-- Navigation HUD -->
+    <header class="header">
+        <a href="../index.html" class="brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+            <span class="brand-text">Solar Explorer</span>
+            <span class="brand-badge">KEPLER-MATH</span>
+        </a>
 
-    <ul class="nav-links">
-        <li><a href="../index.html" class="nav-link">Home</a></li>
-        <li><a href="./about.html" class="nav-link">About</a></li>
-        <li><a href="./solar-walk.html" class="nav-link">SolarWalk</a></li>
-        <li><a href="./resources.html" class="nav-link">Resources</a></li>
-        <li><a href="./calculations.html" class="nav-link active">Calculations</a></li>
-    </ul>
-</header>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Telemetry</a></li>
+                <li><a href="./solar-walk.html" class="nav-link">3D SolarWalk</a></li>
+                <li><a href="./calculations.html" class="nav-link active">Kepler Math</a></li>
+                <li><a href="./about.html" class="nav-link">Orbital Data</a></li>
+                <li><a href="./resources.html" class="nav-link">NASA Portal</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main class="main-container">
-        <section class="page-section active">
-            <div class="content-wrapper single-column">
-                <header class="page-header">
-                    <h1 class="section-title">How We Calculate Your Planetary Age</h1>
-                    <p class="section-subtitle">Understanding the mathematics behind planetary age conversion</p>
-                </header>
+        <header class="page-heading">
+            <h1 class="page-title">Kepler's Planetary Calculations</h1>
+            <p class="page-subtitle">How planetary age is derived from Kepler's Laws of Planetary Motion and orbital period harmonics.</p>
+        </header>
 
-                <article class="calculations-content">
-                    <div class="formula-section">
-                        <h2>The Basic Formula</h2>
-                        <div class="formula-display">
-                            <div class="formula-box">
-                                <h3>Planetary Age =</h3>
-                                <div class="fraction">
-                                    <div class="numerator">Your Age in Earth Years</div>
-                                    <div class="denominator">Planet's Orbital Period (Earth Years)</div>
-                                </div>
-                            </div>
+        <!-- Calculations & Interactive Simulator Grid -->
+        <div class="calc-grid">
+            <!-- Theory Card -->
+            <article class="calc-card">
+                <h2 class="calc-card-title">1. The Orbital Ratio Equation</h2>
+                <p class="calc-card-desc">A planetary year corresponds to one complete heliocentric orbit around the Sun. The age on planet $P$ is inversely proportional to its orbital period.</p>
+                
+                <div class="formula-display-hud">
+                    <div class="formula-target">Age(P) =</div>
+                    <div class="formula-fraction">
+                        <span class="formula-num">Earth Age (Sidereal Years)</span>
+                        <span class="formula-den">Orbital Period T(P)</span>
+                    </div>
+                </div>
+
+                <p class="formula-notes">
+                    Where $T(P)$ is the planetary orbital period in Earth years. By Kepler's Third Law ($T^2 \propto a^3$), orbital period scales exponentially with semi-major axis distance $a$ from the Sun.
+                </p>
+            </article>
+
+            <!-- Live Simulator Card -->
+            <article class="calc-card">
+                <h2 class="calc-card-title">2. Live Orbital Ratio Simulator</h2>
+                <p class="calc-card-desc">Slide to adjust Earth years and observe instantaneous age dilation across the solar system in real time.</p>
+                
+                <div class="calc-simulator">
+                    <div class="sim-slider-row">
+                        <div class="sim-slider-header">
+                            <span>Earth Reference Age:</span>
+                            <span id="slider-earth-val">25.0 Solar Years</span>
                         </div>
-                        <p class="formula-explanation">
-                            This simple division gives us how many times that planet has completed its orbit around the Sun during your lifetime.
-                        </p>
+                        <input type="range" id="sim-slider" class="sim-slider" min="1" max="100" step="0.5" value="25">
                     </div>
 
-                    <div class="step-by-step-section">
-                        <h2>Step-by-Step Process</h2>
-                        <div class="steps-container">
-                            <div class="step-item">
-                                <div class="step-number">1</div>
-                                <div class="step-content">
-                                    <h3>Calculate Earth Age</h3>
-                                    <p>We first determine your exact age in Earth years by calculating the difference between your birth date and today's date.</p>
-                                    <div class="code-snippet-wrapper">
-                                        <code>earthAge = (today - birthDate) / <br>(365.25 * 24 * 60 * 60 * 1000)</code>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="step-item">
-                                <div class="step-number">2</div>
-                                <div class="step-content">
-                                    <h3>Apply Orbital Period</h3>
-                                    <p>We divide your Earth age by each planet's orbital period to get your age on that planet.</p>
-                                    <div class="code-snippet-wrapper">
-                                        <code>planetAge = earthAge / orbitalPeriod</code>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="step-item">
-                                <div class="step-number">3</div>
-                                <div class="step-content">
-                                    <h3>Calculate Next Birthday</h3>
-                                    <p>We determine when your next planetary birthday <br> will occur based on the planet's orbital cycle.</p>
-                                    <div class="code-snippet-wrapper">
-                                        <code>nextBirthday = (Math.floor(planetAge) <br> + 1) * orbitalPeriod - earthAge</code>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="sim-results-grid" id="sim-results-grid">
+                        <!-- Populated by calculations.js -->
                     </div>
+                </div>
+            </article>
+        </div>
 
-                    <div class="orbital-data-section">
-                        <h2>Orbital Periods Data</h2>
-                        <div class="data-table-container">
-                            <table class="orbital-table" id="orbital-table">
-                                <thead>
-                                    <tr>
-                                        <th>Planet</th>
-                                        <th>Orbital Period (Earth Years)</th>
-                                        <th>Orbital Period (Earth Days)</th>
-                                        <th>Distance from Sun (AU)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+        <!-- Official Telemetry Reference Table -->
+        <section class="data-table-section">
+            <h2 class="calc-card-title">NASA JPL Heliocentric Orbital Ephemeris</h2>
+            <p class="calc-card-desc">Reference orbital period parameters used in Solar Explorer conversions.</p>
 
-                    <div class="interactive-calculator">
-                        <h2>Interactive Age Calculator</h2>
-                        <div class="calculator-container">
-                            <form id="age-calculator-form">
-                                <div class="calculator-input">
-                                    <div class="calculator-input-group">
-                                        <label for="age-input">Enter your Earth age:</label>
-                                        <input type="number" id="age-input" min="0" max="150" placeholder="25">
-                                    </div>
-                                    <button type="submit" id="calculate-all-ages-btn" class="calc-btn">Calculate All Planetary Ages</button>
-                                </div>
-                                <div class="calculator-results" id="calculator-results">
-                                    </div>
-                            </form>
-                            </div>
-                    </div>
-
-                    <div class="example-section">
-                        <h2>Example Calculation</h2>
-                        <div class="example-container">
-                            <div class="example-problem">
-                                <h3>Problem:</h3>
-                                <p>If someone is 20 years old on Earth, how old would they be on Mars?</p>
-                            </div>
-                            <div class="example-solution">
-                                <h3>Solution:</h3>
-                                <div class="solution-steps">
-                                    <p><strong>Given:</strong></p>
-                                    <ul>
-                                        <li>Earth Age = 20 years</li>
-                                        <li>Mars Orbital Period = 1.881 Earth years</li>
-                                    </ul>
-                                    <p><strong>Calculation:</strong></p>
-                                    <p>Mars Age = 20 ÷ 1.881 = 10.63 years</p>
-                                    <p><strong>Result:</strong></p>
-                                    <p>A 20-year-old person on Earth would be approximately 10.63 years old on Mars!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accuracy-note">
-                        <h2>Note on Accuracy</h2>
-                        <div class="accuracy-note-content">
-                            <p>Our calculations use the average orbital periods of planets. In reality, planetary orbits are slightly elliptical, which means the actual orbital period can vary slightly. However, for educational purposes, these average values provide an excellent approximation of your age on other planets.</p>
-                            <p>The leap year calculation (365.25 days per year) accounts for the extra day added every four years to keep our calendar synchronized with Earth's orbit.</p>
-                        </div>
-                    </div>
-                </article>
+            <div class="table-wrapper">
+                <table class="telemetry-table" id="orbital-table">
+                    <thead>
+                        <tr>
+                            <th>Celestial Body</th>
+                            <th>Symbol</th>
+                            <th>Period (Earth Yrs)</th>
+                            <th>Period (Solar Days)</th>
+                            <th>Semi-Major Axis (km)</th>
+                            <th>Mean Velocity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Injected by calculations.js -->
+                    </tbody>
+                </table>
             </div>
         </section>
     </main>
 
- <footer class="footer">
-        <div class="footer-content">
-             <div class="footer-section">
-                 <h3>Data Sources</h3>
-                 <ul>
-                     <li><a href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA</a></li>
-                     <li><a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA Open Data</a></li>
-                     <li><a href="https://solarsystem.nasa.gov/" target="_blank" rel="noopener">NASA Solar System</a></li>
-                 </ul>
-             </div>
-             <div class="footer-section">
-                 <h3>Educational Use</h3>
-                 <p>This tool is provided free for educational purposes under NASA's Open Data Policy.</p>
-             </div>
-             <div class="footer-section">
-                 <h3>Last Updated</h3>
-                 <p>July 2025</p>
-             </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>SOLAR EXPLORER</h3>
+                <p>Educational mathematical physics suite for celestial kinematics and Keplerian calculations.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="../index.html">Telemetry Dashboard</a></li>
+                    <li><a href="./solar-walk.html">3D SolarWalk</a></li>
+                    <li><a href="./calculations.html">Kepler Math</a></li>
+                    <li><a href="./about.html">Orbital Data</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>NASA Open APIs</h4>
+                <ul>
+                    <li><a href="https://ssd.jpl.nasa.gov/" target="_blank" rel="noopener">JPL Horizons Ephemeris</a></li>
+                    <li><a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA Open Data</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Formula Basis</h4>
+                <ul>
+                    <li>Kepler's Harmonic Law</li>
+                    <li>Sidereal Earth: 365.256d</li>
+                    <li>Precision: Float64 Telemetry</li>
+                </ul>
+            </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Planetary Age Calculator. Educational purposes only. Data courtesy of NASA.</p>
+            <p>&copy; 2026 Solar Explorer. Data courtesy of NASA JPL.</p>
+            <p>Developed by Muhammad Hafiz Alfarizi</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="../js/starfield.js"></script>
     <script src="../js/planets-data.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/calculations.js"></script>

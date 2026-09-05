@@ -1,145 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Planets - Solar Explorer</title>
-    <meta name="description" content="Learn about orbital periods, day lengths, and distances from the Sun for all planets in our solar system. Understanding cosmic time difference.">
-    <meta name="keywords" content="planetary characteristics, orbital period, planet day length, solar system facts">
-    <link rel="stylesheet" href="../css/about.css">
+    <title>Planetary Orbital Characteristics — Solar Explorer</title>
+    <meta name="description" content="Explore physical and astronomical metrics for terrestrial and giant planets. Comparative analysis of orbital radius, rotational period, and climate extremes.">
+    <meta name="keywords" content="planetary characteristics, orbital period comparison, solar system data, planetary science">
     <link rel="stylesheet" href="../css/styles.css">
-
+    <link rel="stylesheet" href="../css/about.css">
 </head>
-
 <body>
-    <div class="stars" id="stars"></div>
+    <canvas id="stars"></canvas>
 
+    <!-- Navigation HUD -->
     <header class="header">
-        <div class="logo">Solar Explorer</div>
+        <a href="../index.html" class="brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+            <span class="brand-text">Solar Explorer</span>
+            <span class="brand-badge">ORBITAL-DATA</span>
+        </a>
 
-        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
         </button>
 
-        <ul class="nav-links">
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="./about.html" class="nav-link active">About</a></li>
-            <li><a href="./solar-walk.html" class="nav-link">SolarWalk</a></li>
-            <li><a href="./resources.html" class="nav-link">Resources</a></li>
-            <li><a href="./calculations.html" class="nav-link">Calculations</a></li>
-        </ul>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Telemetry</a></li>
+                <li><a href="./solar-walk.html" class="nav-link">3D SolarWalk</a></li>
+                <li><a href="./calculations.html" class="nav-link">Kepler Math</a></li>
+                <li><a href="./about.html" class="nav-link active">Orbital Data</a></li>
+                <li><a href="./resources.html" class="nav-link">NASA Portal</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main class="main-container">
-        <section class="page-section active">
-            <div class="content-wrapper single-column">
-                <header class="page-header">
-                    <h1 class="section-title">About Planetary Ages</h1>
-                    <p class="section-subtitle">Understanding how time works differently across our solar system</p>
-                </header>
+        <header class="page-heading">
+            <h1 class="page-title">Planetary Characteristics</h1>
+            <p class="page-subtitle">A comprehensive astrophysical breakdown of revolution periods, axial tilt, and environmental extremes across the solar system.</p>
+        </header>
 
-                <article class="about-content">
-                    <div class="intro-section">
-                        <h2>What Makes Each Planet Unique?</h2>
-                        <p>Each planet in our solar system has a different orbital period around the Sun and rotational
-                            period on its axis. This means that a "year" and a "day" on each planet is vastly different
-                            from what we experience on Earth.</p>
-                    </div>
+        <!-- Core Concept Cards -->
+        <section class="concept-grid-modern">
+            <div class="concept-card-modern">
+                <div class="concept-icon-box">T</div>
+                <h3>Orbital Revolution (Year)</h3>
+                <p>The time required for a celestial body to complete one full revolution around the solar barycenter, determining its seasonal and calendar year.</p>
+            </div>
+            <div class="concept-card-modern">
+                <div class="concept-icon-box">ω</div>
+                <h3>Axial Rotation (Day)</h3>
+                <p>The time taken for a planet to complete 360 degrees of rotation on its polar axis. Venus and Uranus exhibit retrograde spin.</p>
+            </div>
+            <div class="concept-card-modern">
+                <div class="concept-icon-box">AU</div>
+                <h3>Semi-Major Axis (Distance)</h3>
+                <p>Mean distance from the Sun measured in Astronomical Units (1 AU ≈ 149.6M km). Governs solar irradiance and thermal balance.</p>
+            </div>
+        </section>
 
-                    <div class="concept-grid">
-                        <div class="concept-card">
-                            <div class="concept-icon">🌍</div>
-                            <h3>Orbital Period</h3>
-                            <p>The time it takes a planet to complete one full orbit around the Sun. This determines the
-                                length of a year on that planet.</p>
-                        </div>
-                        <div class="concept-card">
-                            <div class="concept-icon">🌀</div>
-                            <h3>Rotational Period</h3>
-                            <p>The time it takes a planet to complete one full rotation on its axis. This determines the
-                                length of a day on that planet.</p>
-                        </div>
-                        <div class="concept-card">
-                            <div class="concept-icon">📏</div>
-                            <h3>Distance from Sun</h3>
-                            <p>The farther a planet is from the Sun, the longer its orbital period and the older you
-                                would be in Earth years.</p>
-                        </div>
-                    </div>
+        <!-- Comparative Planetary Cards -->
+        <section class="comparison-section">
+            <div class="section-head-bar">
+                <h2>Celestial Body Catalog</h2>
+                <p>Verified physical parameters sourced from the NASA Planetary Fact Sheet.</p>
+            </div>
 
-                    <div class="planet-details-section">
-                        <h2>Planetary Characteristics</h2>
-                        <div class="planet-comparison-grid" id="planet-comparison-grid">
-                        </div>
-                    </div>
-
-                    <div class="fun-facts-section">
-                        <h2>Fascinating Facts</h2>
-                        <div class="facts-container">
-                            <div class="fact-item">
-                                <span class="fact-number">1</span>
-                                <p>The Sun holds 99.86% of the solar system's mass, generating immense gravity that keeps all planets orbiting.</p>
-                            </div>
-                            <div class="fact-item">
-                                <span class="fact-number">2</span>
-                                <p>On Venus, you'd age slower - only about 32.5 years old when you're 20 on Earth.</p>
-                            </div>
-                            <div class="fact-item">
-                                <span class="fact-number">3</span>
-                                <p>You'd have to wait 84 Earth years to celebrate your first birthday on Uranus!</p>
-                            </div>
-                            <div class="fact-item">
-                                <span class="fact-number">4</span>
-                                <p>Pluto is so far from the Sun that it hasn't completed one full orbit since its
-                                    discovery in 1930!</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="interactive-section">
-                        <h2>Interactive Learning</h2>
-                        <div class="video-embed-container">
-                            <video controls autoplay loop muted class="solar-system-video">
-                                <source src="../css/assets/video-tata-surya.mp4" type="video/mp4">
-                                Browser Anda tidak mendukung tag video.
-                            </video>
-                        </div>
-                        <p class="video-caption">Saksikan simulasi sistem tata surya kita dalam video ini.</p>
-                    </div>
-                </article>
+            <div class="planet-compare-grid" id="planet-comparison-grid">
+                <!-- Dynamically populated by about.js -->
             </div>
         </section>
     </main>
 
- <footer class="footer">
-        <div class="footer-content">
-             <div class="footer-section">
-                 <h3>Data Sources</h3>
-                 <ul>
-                     <li><a href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA</a></li>
-                     <li><a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA Open Data</a></li>
-                     <li><a href="https://solarsystem.nasa.gov/" target="_blank" rel="noopener">NASA Solar System</a></li>
-                 </ul>
-             </div>
-             <div class="footer-section">
-                 <h3>Educational Use</h3>
-                 <p>This tool is provided free for educational purposes under NASA's Open Data Policy.</p>
-             </div>
-             <div class="footer-section">
-                 <h3>Last Updated</h3>
-                 <p>July 2025</p>
-             </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>SOLAR EXPLORER</h3>
+                <p>Educational astronomical registry tracking celestial data across the heliosphere.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="../index.html">Telemetry Dashboard</a></li>
+                    <li><a href="./solar-walk.html">3D SolarWalk</a></li>
+                    <li><a href="./calculations.html">Kepler Math</a></li>
+                    <li><a href="./about.html">Orbital Data</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Data Courtesy</h4>
+                <ul>
+                    <li>NASA Planetary Data System</li>
+                    <li>Goddard Space Flight Center</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Classification</h4>
+                <ul>
+                    <li>Terrestrial Worlds: 4</li>
+                    <li>Gas Giants: 2</li>
+                    <li>Ice Giants: 2</li>
+                </ul>
+            </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Planetary Age Calculator. Educational purposes only. Data courtesy of NASA.</p>
+            <p>&copy; 2026 Solar Explorer. Data courtesy of NASA.</p>
+            <p>Developed by Muhammad Hafiz Alfarizi</p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="../js/starfield.js"></script>
     <script src="../js/planets-data.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/about.js"></script>
 </body>
-
 </html>
