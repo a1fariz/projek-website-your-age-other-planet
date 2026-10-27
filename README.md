@@ -59,8 +59,8 @@ Website ini berbasis *static web* murni (HTML5, CSS3, Vanilla ES6+ JS) tanpa kom
 
 1. **Clone Repositori**:
    ```bash
-   git clone https://github.com/a1fariz/new.git
-   cd new
+   git clone https://github.com/a1fariz/projek-website-your-age-other-planet.git
+   cd projek-website-your-age-other-planet
    ```
 
 2. **Jalankan dengan Server Lokal (Pilihan)**:
@@ -113,3 +113,7 @@ ALFA_RIZI/
 
 Dikembangkan oleh **Muhammad Hafiz Alfarizi** ([@a1fariz](https://github.com/a1fariz)).  
 *Didedikasikan untuk penjelajahan sains astronomi dan keindahan mekanika langit.*
+
+---
+
+[Portfolio Alfa Rizi](https://alfarizi.my.id) · [GitHub profile](https://github.com/a1fariz) · [Contact](mailto:alfarizi.developer@gmail.com)
